@@ -62,3 +62,15 @@ executar o comando de instalação:
 source venv/bin/activate
 poetry install
 ```
+
+## Executando a aplicação localmente
+
+Após a instalação de todos os recursos, certifique-se de ativar o ambiente
+virtual para executar o servidor Flask:
+
+```bash
+source venv/bin/activate
+flask run
+```
+
+A aplicação estará disponível em no endereço `127.0.0.1:5000`.
