@@ -18,18 +18,18 @@ ferramentas:
 
 #### Python
 
-Instalação do intérprete pode ser realizado de acordo com o manual disponícel na
+Instalação do intérprete pode ser realizada de acordo com o manual disponível na
 [documentação oficial](https://www.python.org/downloads/release/python-3120/).
-Pode ser necessário realizar a instalação através dos repositórios do time
+Pode ser necessário realizar a instalação através dos repositórios do
 [deadsnakes](https://github.com/deadsnakes).
 
 #### venv
 
-Ambientes virtuais são a maneira mais convenvional de isolar a instalação de
+Ambientes virtuais são a maneira mais convencional de isolar a instalação de
 pacotes python no contexto do sistema operacional. A ferramenta pode ser
 instalada de acordo com a
 [documentação oficial](https://virtualenv.pypa.io/en/stable/installation.html).
-Pode ser necessário realizar a instalação através dos repositórios do time
+Pode ser necessário realizar a instalação através dos repositórios do
 [deadsnakes](https://github.com/deadsnakes).
 
 #### pipx
