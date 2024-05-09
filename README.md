@@ -144,13 +144,13 @@ def test_hello():
     assert hello() == "Hello, World!"
 ```
 
-### Executando testes unitários com tox e pytest
+### Executando testes e checks com tox
 
 O projeto está configurado para realizar a execução dos testes unitários através
 do [pytest](https://docs.pytest.org/en/8.2.x/) e automatizado através do
 [tox](https://tox.wiki/en/4.15.0/).
 
-É possível executar todos os testes unitários do sistema através do tox (via
+É possível executar todos os testes e linting do sistema através do tox (via
 Poetry):
 
 ```bash
