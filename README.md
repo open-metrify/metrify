@@ -14,7 +14,7 @@ ferramentas:
 - [**venv**](#venv)
 - [**pipx** (opcional porém recomendado)](#pipx)
 - [**Poetry**](#poetry)
-- [**MongoDB**](#mongodb)
+- [**Docker**](#docker-e-compose)
 
 #### Python
 
@@ -47,11 +47,13 @@ instalada de acordo com o manual encontrado na
 [documentação oficial](https://python-poetry.org/docs/#installation);
 recomenda-se realizar a instalação através do `pipx`.
 
-#### MongoDB
+#### Docker e Compose
 
-Instale uma versão atual gerenciador de banco de dados na versão _Community
-Edition_ de acordo com o manual para a distribuição do SO da sua máquina na
-[documentação oficial](https://www.mongodb.com/docs/manual/installation/).
+Docker e a ferramenta auxiliar Compose são utilizados para isolar a execução de
+processos e aplicações em máquinas virtualizadas separadamente do ambiente do
+sistema operacional. Para instalar as ferramentas, siga os passos especificados
+para a distribuição do seu SO de acordo com a
+[documentação oficial](https://docs.docker.com/desktop/install/linux-install/).
 
 ### Instalação das dependências do projeto
 
@@ -64,6 +66,26 @@ poetry install
 ```
 
 ## Executando a aplicação localmente
+
+> Antes de inicializar a aplicação, é necessário ativar o container do banco de
+> dados do projeto no [docker](#docker-e-compose). Para verificar o status atual
+> do container execute o comando `docker ps`:
+>
+> ```bash
+> docker ps
+> CONTAINER ID   IMAGE                  COMMAND                  CREATED        STATUS             PORTS                                       NAMES
+> 918266dc5863   mongo                  "docker-entrypoint.s…"   6 days ago     Up About an hour   27017/tcp                                   metrify_mongo_1
+> ```
+>
+> Caso o container do metrify não conste na lista apresentada, execute o
+> [compose](#docker-e-compose) (dentro do projeto) para ativar os containers:
+>
+> ```bash
+> # Dependendo da versão do Docker instalada no sistema, execute "docker compose" ou "docker-compose", se o compose for instalado separadamente. Consultar documentação oficial.
+>
+> docker compose up -d mongo
+> Creating metrify_mongo_1 ... done
+> ```
 
 Após a instalação de todos os recursos, certifique-se de ativar o ambiente
 virtual para executar o servidor Flask:
