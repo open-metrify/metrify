@@ -1,8 +1,5 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint
 
 bp = Blueprint("hello", __name__)
 
-
-@bp.route("/hello")
-def hello():
-    return jsonify("Hello, World!")
+from metrify.hello import routes
