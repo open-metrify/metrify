@@ -1,6 +1,6 @@
 # metrify 📊📈📉
 
-![Tox](https://github.com/PedroBinotto/metrify/actions/workflows/tox-check.yaml/badge.svg)
+![Tox](https://github.com/PedroBinotto/metrify/actions/workflows/tests.yaml/badge.svg)
 
 Sistema de coleta automática de métricas com base nos webhooks do Github
 Projects.
@@ -146,57 +146,31 @@ def test_hello():
     assert hello() == "Hello, World!"
 ```
 
-### Executando testes e checks com tox
+### Executando testes e checagem com tox
 
-O projeto está configurado para realizar a execução dos testes unitários através
-do [pytest](https://docs.pytest.org/en/8.2.x/) e automatizado através do
-[tox](https://tox.wiki/en/4.15.0/).
+O projeto está configurado para realizar a execução dos testes, linting e
+checagem através do [pytest](https://docs.pytest.org/en/8.2.x/),
+[mypy](https://mypy-lang.org/) e [pylint](https://pylint.org/), e automatizado
+através do [tox](https://tox.wiki/en/4.15.0/).
 
-É possível executar todos os testes e linting do sistema através do tox (via
-Poetry):
+É possível executar todos as checagens do sistema através do tox (via Poetry):
 
 ```bash
 poetry run tox
-.pkg: _optional_hooks> python /home/bridge/Projetos/bridge/metrify/venv/lib/python3.12/site-packages/pyproject_api/_backend.py True poetry.core.masonry.api
-.pkg: get_requires_for_build_wheel> python /home/bridge/Projetos/bridge/metrify/venv/lib/python3.12/site-packages/pyproject_api/_backend.py True poetry.core.masonry.api
-.pkg: build_wheel> python /home/bridge/Projetos/bridge/metrify/venv/lib/python3.12/site-packages/pyproject_api/_backend.py True poetry.core.masonry.api
-py312: install_package> python -I -m pip install --force-reinstall --no-deps /home/bridge/Projetos/bridge/metrify/.tox/.tmp/package/4/metrify-0.1.0-py3-none-any.whl
-py312: commands[0]> pytest --color=yes
-============================================================================================================================== test session starts ===============================================================================================================================
-platform linux -- Python 3.12.3, pytest-8.2.0, pluggy-1.5.0
-cachedir: .tox/py312/.pytest_cache
-rootdir: /home/bridge/Projetos/bridge/metrify
-configfile: pyproject.toml
-collected 1 item
-
-tests/hello/test_operations.py .                                                                                                                                                                                                                                           [100%]
-
-=============================================================================================================================== 1 passed in 0.14s ================================================================================================================================
-.pkg: _exit> python /home/bridge/Projetos/bridge/metrify/venv/lib/python3.12/site-packages/pyproject_api/_backend.py True poetry.core.masonry.api
-  py312: OK (0.98=setup[0.66]+cmd[0.32] seconds)
-  congratulations :) (1.03 seconds)
 ```
 
-Ou executar testes individualmente:
+Executar etapas do processo de checagem separadamente:
 
 ```bash
-tox -- tests/hello/test_operations.py::test_hello -v 
-.pkg: _optional_hooks> python /home/bridge/Projetos/bridge/metrify/venv/lib/python3.12/site-packages/pyproject_api/_backend.py True poetry.core.masonry.api
-.pkg: get_requires_for_build_wheel> python /home/bridge/Projetos/bridge/metrify/venv/lib/python3.12/site-packages/pyproject_api/_backend.py True poetry.core.masonry.api
-.pkg: build_wheel> python /home/bridge/Projetos/bridge/metrify/venv/lib/python3.12/site-packages/pyproject_api/_backend.py True poetry.core.masonry.api
-py312: install_package> python -I -m pip install --force-reinstall --no-deps /home/bridge/Projetos/bridge/metrify/.tox/.tmp/package/5/metrify-0.1.0-py3-none-any.whl
-py312: commands[0]> pytest --color=yes tests/hello/test_operations.py::test_hello -v
-============================================================================================================================== test session starts ===============================================================================================================================
-platform linux -- Python 3.12.3, pytest-8.2.0, pluggy-1.5.0 -- /home/bridge/Projetos/bridge/metrify/.tox/py312/bin/python
-cachedir: .tox/py312/.pytest_cache
-rootdir: /home/bridge/Projetos/bridge/metrify
-configfile: pyproject.toml
-collected 1 item
+poetry run pytest                   # testes
+poetry run pylint metrify tests     # linter
+poetry run mypy metrify tests       # type check
+```
 
-tests/hello/test_operations.py::test_hello PASSED                                                                                                                                                                                                                          [100%]
+Ou em arquivos individuais:
 
-=============================================================================================================================== 1 passed in 0.15s ================================================================================================================================
-.pkg: _exit> python /home/bridge/Projetos/bridge/metrify/venv/lib/python3.12/site-packages/pyproject_api/_backend.py True poetry.core.masonry.api
-  py312: OK (1.09=setup[0.74]+cmd[0.35] seconds)
-  congratulations :) (1.14 seconds)
+```bash
+poetry run pylint metrify/hello/operations.py
+poetry run pytest tests/hello/test_operations.py
+...
 ```
