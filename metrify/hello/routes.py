@@ -1,6 +1,6 @@
 """
-The "routes.py" module registers the operation URL endpoints to the 
-package's `Blueprint` object.
+The "routes.py" module registers the operation URL endpoints to the package's
+`Blueprint` object.
 """
 
 from flask import Response, jsonify

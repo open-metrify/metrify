@@ -99,6 +99,17 @@ flask run
 
 A aplicação estará disponível em no endereço `127.0.0.1:5000`.
 
+## pre-commit
+
+O projeto é configurado para executar uma checagem rápida do código antes de
+cada commit no controle de versão. Para habilitar os _hooks_, basta executar o
+comando de instalação:
+
+```bash
+# Com o ambiente virtual ativo e após instalar as dependências do projeto (poetry install)
+pre-commit install
+```
+
 ## Testes unitários
 
 ### Estrutura
@@ -148,10 +159,11 @@ def test_hello():
 
 ### Executando testes e checagem com tox
 
-O projeto está configurado para realizar a execução dos testes, linting e
-checagem através do [pytest](https://docs.pytest.org/en/8.2.x/),
-[pylint](https://pylint.org/) e [mypy](https://mypy-lang.org/), e automatizado
-através do [tox](https://tox.wiki/en/4.15.0/).
+O projeto está configurado para realizar a execução dos testes, formatação,
+linting e checagem através do [pytest](https://docs.pytest.org/en/8.2.x/),
+[autopep8](https://pypi.org/project/autopep8/), [pylint](https://pylint.org/) e
+[mypy](https://mypy-lang.org/), e automatizado através do
+[tox](https://tox.wiki/en/4.15.0/).
 
 É possível executar todos as checagens do sistema através do tox (via Poetry):
 

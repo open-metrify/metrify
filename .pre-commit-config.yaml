@@ -1,0 +1,24 @@
+repos:
+  - repo: local
+    hooks:
+      - id: format
+        name: Formatting
+        entry: poetry run autopep8
+        language: system
+        require_serial: true
+        types:
+          - python
+      - id: lint
+        name: Lint
+        entry: poetry run pylint
+        language: system
+        require_serial: true
+        types:
+          - python
+      - id: Type checks
+        name: mypy
+        entry: poetry run mypy
+        language: system
+        require_serial: true
+        types:
+          - python
