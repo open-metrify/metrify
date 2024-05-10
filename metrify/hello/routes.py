@@ -1,5 +1,5 @@
 """
-The "routes.py" module registers the operation URL endpoints to the 
+The "routes.py" module registers the operation URL endpoints to the
 package's `Blueprint` object.
 """
 

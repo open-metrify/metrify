@@ -1,6 +1,6 @@
 """
-The `hello` package serves the sole purpose of demonstrating good 
-practices and design patterns that should be enforced in the project's 
+The `hello` package serves the sole purpose of demonstrating good
+practices and design patterns that should be enforced in the project's
 code and structuring.
 
 This module exports a `Blueprint` object with a single registered route,
