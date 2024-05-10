@@ -99,6 +99,17 @@ flask run
 
 A aplicação estará disponível em no endereço `127.0.0.1:5000`.
 
+## pre-commit
+
+O projeto é configurado para executar uma checagem rápida do código antes de
+cada commit no controle de versão. Para habilitar os _hooks_, basta executar o
+comando de instalação:
+
+```bash
+# Com o ambiente virtual ativo e após instalar as dependências do projeto (poetry install)
+pre-commit install
+```
+
 ## Testes unitários
 
 ### Estrutura
