@@ -14,6 +14,7 @@ flask-pymongo = "^2.3.0"
 python-dotenv = "^1.0.1"
 
 [tool.poetry.group.dev.dependencies]  
+autopep8 = "^2.1.0"
 mypy = "^1.10.0"
 pylint = "^3.1.0"
 pytest = "^8.2.0"
@@ -23,6 +24,14 @@ tox = "^4.15.0"
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
+
+[tool.autopep8]
+experimental = true
+in-place = true
+recursive = true
+verbose = true
+ignore = "E402"
+aggressive = 2
 
 [build-system]
 requires = ["poetry-core"]

@@ -1,6 +1,6 @@
 """
-The "operations.py" module implements the "backend" for the endpoints
-exposed by the package's "routes.py".
+The "operations.py" module implements the "backend" for the endpoints exposed
+by the package's "routes.py".
 """
 
 
