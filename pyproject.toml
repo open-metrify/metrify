@@ -1,8 +1,9 @@
 [tool.poetry]
 name = "metrify"
 version = "0.1.0"
-description = ""
+description = "Sistema de coleta automática de métricas com base nos webhooks do Github Projects."
 authors = ["Pedro Binotto <pedrosantibinotto@gmail.com>"]
+license = "GPL-3.0-only"
 readme = "README.md"
 
 [tool.poetry.dependencies]
