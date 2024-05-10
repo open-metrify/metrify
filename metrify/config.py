@@ -14,3 +14,4 @@ class Config:
     """
 
     MONGO_URI = "mongodb://localhost:27017/metrify"
+    SCHEDULER_API_ENABLED = True

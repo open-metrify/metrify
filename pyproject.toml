@@ -12,6 +12,7 @@ flask = "^3.0.3"
 pymongo = "^4.7.1"
 flask-pymongo = "^2.3.0"
 python-dotenv = "^1.0.1"
+flask-apscheduler = "^1.13.1"
 
 [tool.poetry.group.dev.dependencies]  
 mypy = "^1.10.0"
