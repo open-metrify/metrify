@@ -1,5 +1,7 @@
 # metrify 📊📈📉
 
+[Tox](https://github.com/PedroBinotto/metrify/actions/workflows/tox-check.yaml/badge.svg)
+
 Sistema de coleta automática de métricas com base nos webhooks do Github
 Projects.
 
