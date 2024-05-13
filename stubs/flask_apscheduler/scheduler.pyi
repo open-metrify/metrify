@@ -1,17 +1,33 @@
-from datetime import datetime
-from typing import Callable, Never
+from datetime import datetime, tzinfo
+from typing import Any, Callable, Never, Type, TypedDict
+from typing_extensions import Unpack
 
 from flask import Flask
 
+type Args = list[Any] | tuple[Any] | None  # type: ignore[misc, valid-type] # noqa: F821
+type Kwargs = dict[Any, Any] | None  # type: ignore[misc, valid-type] # noqa: F821
+type F = Callable[[Any], Any] | Never  # type: ignore[misc, valid-type] # noqa: F821
+
 class _Undefined(object): ...
 class BaseTrigger(object): ...
+
+class TriggerArgs(TypedDict, total=False):
+    weeks: int
+    days: int
+    hours: int
+    minutes: int
+    seconds: int
+    start_date: datetime | str
+    end_date: datetime | str
+    timezone: Type[tzinfo] | str
+    jitter: int | None
 
 class APScheduler(object):
     def task(
         self,
         trigger: str | BaseTrigger,
-        args: list[object] | tuple[object] | None = None,
-        kwargs: dict[object, object] | None = None,
+        args: Args = None,
+        kwargs: Kwargs = None,
         id: str | None = None,
         name: str | None = None,
         misfire_grace_time: _Undefined | int = _Undefined(),
@@ -20,7 +36,7 @@ class APScheduler(object):
         next_run_time: datetime | _Undefined = _Undefined(),
         jobstore: str = "default",
         executor: str = "default",
-        **trigger_args: dict[str, object] | int | str | object,
-    ) -> Callable[[object], object] | Never: ...
+        **trigger_args: Unpack[TriggerArgs],
+    ) -> F: ...
     def init_app(self, app: Flask) -> None: ...
     def start(self, paused: bool = False) -> None: ...
