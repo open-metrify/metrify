@@ -1,6 +1,5 @@
-from collections.abc import Callable
 from datetime import datetime
-from typing import Never
+from typing import Callable, Never
 
 from flask import Flask
 
@@ -21,7 +20,7 @@ class APScheduler(object):
         next_run_time: datetime | _Undefined = _Undefined(),
         jobstore: str = "default",
         executor: str = "default",
-        **trigger_args: dict[str, object | int] | int,
+        **trigger_args: dict[str, object] | int | str | object,
     ) -> Callable[[object], object] | Never: ...
     def init_app(self, app: Flask) -> None: ...
     def start(self, paused: bool = False) -> None: ...
