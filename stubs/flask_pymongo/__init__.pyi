@@ -1,23 +1,38 @@
-from typing import Any, TypedDict, Unpack
+from typing import Any
 from flask import Flask, Response
 
-class Kwargs(TypedDict, total=False): ...
+type Kwargs = Any  # type: ignore[misc, valid-type] # noqa: F821
+type Args = Any  # type: ignore[misc, valid-type] # noqa: F821
+type File = Any  # type: ignore[misc, valid-type] # noqa: F821
+type Id = Any  # type: ignore[misc, valid-type] # noqa: F821
 
 class PyMongo(object):
-    def __init__(  # type: ignore[misc] # noqa: F821
+    def __init__(
         self,
         app: Flask | None = None,
         uri: str | None = None,
-        *args: tuple[Any],
-        **kwargs: dict[Any, Any]
+        *args: Args,
+        **kwargs: Kwargs,
     ) -> None: ...
-    def init_app(self, app, uri=None, *args, **kwargs) -> None: ...
+    def init_app(
+        self,
+        app: Flask,
+        uri: str | None = None,
+        *args: Args,
+        **kwargs: Kwargs,
+    ) -> None: ...
     def send_file(
         self,
         filename: str,
         base: str = "fs",
-        version: bool = -1,
+        version: bool | int = -1,
         cache_for: int = 31536000,
-    ) -> Response:
-        def save_file(self, filename: str, fileobj: Any, base: str = "fs", content_type: str = None, **kwargs: Unpack[Kwargs]) -> Any:  # type: ignore[misc] # noqa: F821
-            ...
+    ) -> Response: ...
+    def save_file(
+        self,
+        filename: str,
+        fileobj: File,
+        base: str = "fs",
+        content_type: str | None = None,
+        **kwargs: Kwargs,
+    ) -> Id: ...
