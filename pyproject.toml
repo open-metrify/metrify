@@ -13,6 +13,9 @@ pymongo = "^4.7.1"
 flask-pymongo = "^2.3.0"
 python-dotenv = "^1.0.1"
 flask-apscheduler = "^1.13.1"
+sphinx = { version = "^7.3.7", optional = true }
+sphinx-rtd-theme = { version = "^2.0.0", optional = true }
+sphinxcontrib-napoleon = { version = "^0.7", optional = true }
 
 [tool.poetry.group.dev.dependencies]  
 autopep8 = "^2.1.0"
@@ -23,6 +26,9 @@ pytest = "^8.2.0"
 pytest-sugar = "^1.0.0"
 pytest-cov = "^5.0.0"
 tox = "^4.15.0"
+
+[tool.poetry.extras]
+docs = ["Sphinx", "sphinx-rtd-theme", "sphinxcontrib-napoleon"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
