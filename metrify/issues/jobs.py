@@ -1,8 +1,4 @@
-"""
-FIXME: Arquivo ignorado por falta de STUBS para lib flask-apscheculer.
-       -> Investigar possibilidade de gerar arquivos de stub
-"""
-# mypy: ignore-errors
+"""..."""
 
 from metrify import apscheduler
 

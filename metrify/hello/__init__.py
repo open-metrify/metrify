@@ -13,3 +13,5 @@ bp = Blueprint("hello", __name__)
 
 # pylint: disable=wrong-import-position, cyclic-import
 from metrify.hello import routes
+
+__all__ = ["routes"]
