@@ -6,10 +6,10 @@ The "routes.py" module registers the operation URL endpoints to the package's
 from flask import Response, jsonify
 
 from metrify.hello import bp
-from metrify.hello.operations import hello as op
+from metrify.hello.strategies import hello as hello_strategy
 
 
 @bp.route("/hello")
 def hello() -> Response:
     """Status Code 200 HELLO, WORLD!"""
-    return jsonify(op())
+    return jsonify(hello_strategy())
