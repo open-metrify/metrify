@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "metrify"
 version = "0.1.0"
-description = "Sistema de coleta automática de métricas com base nos webhooks do Github Projects."
+description = "Sistema de coleta automática de métricas com base na API do Github."
 authors = ["Pedro Binotto <pedrosantibinotto@gmail.com>"]
 license = "GPL-3.0-only"
 readme = "README.md"
@@ -13,6 +13,7 @@ pymongo = "^4.7.1"
 flask-pymongo = "^2.3.0"
 python-dotenv = "^1.0.1"
 flask-apscheduler = "^1.13.1"
+sphinx = { version = "^7.3.7", optional = true }
 
 [tool.poetry.group.dev.dependencies]  
 autopep8 = "^2.1.0"
@@ -23,6 +24,9 @@ pytest = "^8.2.0"
 pytest-sugar = "^1.0.0"
 pytest-cov = "^5.0.0"
 tox = "^4.15.0"
+
+[tool.poetry.extras]
+docs = ["Sphinx", "sphinx-rtd-theme"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]

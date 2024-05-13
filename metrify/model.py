@@ -1,6 +1,4 @@
-"""
-...
-"""
+"""..."""
 
 
 from typing import TypedDict
@@ -12,6 +10,7 @@ class Developer(TypedDict):
     """
 
     name: str
+
 
 class Issue(TypedDict):
     """
