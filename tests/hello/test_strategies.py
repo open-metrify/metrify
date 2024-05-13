@@ -1,8 +1,8 @@
 """
-Test suite for metrify.hello.operations
+Test suite for metrify.hello.strategies
 """
 
-from metrify.hello.operations import hello
+from metrify.hello.strategies import hello
 
 
 def test_hello() -> None:

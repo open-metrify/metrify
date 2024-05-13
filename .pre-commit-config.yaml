@@ -8,6 +8,8 @@ repos:
         require_serial: true
         types:
           - python
+        files:
+          metrify tests
       - id: lint
         name: Lint
         entry: poetry run pylint
@@ -15,6 +17,8 @@ repos:
         require_serial: true
         types:
           - python
+        files:
+          metrify tests
       - id: Type checks
         name: mypy
         entry: poetry run mypy
@@ -22,3 +26,5 @@ repos:
         require_serial: true
         types:
           - python
+        files:
+          metrify tests

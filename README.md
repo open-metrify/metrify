@@ -2,8 +2,7 @@
 
 ![Tox](https://github.com/PedroBinotto/metrify/actions/workflows/tests.yaml/badge.svg)
 
-Sistema de coleta automática de métricas com base nos webhooks do Github
-Projects.
+Sistema de coleta automática de métricas com base na API do Github.
 
 ## Configuração do ambiente de desenvolvimento
 
@@ -121,7 +120,7 @@ O repositório do projeto é disposto de acordo com a estrutura a seguir:
 ├── metrify
 │   ├── hello
 │   │   ├── __init__.py
-│   │   ├── operations.py
+│   │   ├── strategies.py
 │   │   └── routes.py
 │   ├── __init__.py
 │   └── metrify.py
@@ -131,7 +130,7 @@ O repositório do projeto é disposto de acordo com a estrutura a seguir:
 ├── tests
 │   ├── hello
 │   │   ├── __init__.py
-│   │   └── test_operations.py
+│   │   └── test_strategies.py
 │   └── __init__.py
 └── tox.ini
 ```
@@ -148,9 +147,9 @@ arquivos no diretório-fonte (`metrify/`).
   onde "src" refere-se ao nome da função que está sendo testada. ex.:
 
 ```python
-# file: tests.hello.test_operations
+# file: tests.hello.test_strategies
 
-from metrify.hello.operations import hello
+from metrify.hello.strategies import hello
 
 def test_hello():
     """Returns 'Hello, World!'"""
@@ -182,7 +181,7 @@ poetry run mypy metrify tests       # type check
 Ou em arquivos individuais:
 
 ```bash
-poetry run pylint metrify/hello/operations.py
-poetry run pytest tests/hello/test_operations.py
+poetry run pylint metrify/hello/strategies.py
+poetry run pytest tests/hello/test_strategies.py
 ...
 ```
