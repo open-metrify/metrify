@@ -10,4 +10,5 @@ Sub-modules:
 .. toctree::
    :maxdepth: 2
 
+   routes
    strategies

@@ -7,9 +7,7 @@ Sistema de coleta automática de métricas com base na API do Github.
 
 [Documentação Completa](https://pedrobinotto.github.io/metrify/index.html)
 
-## Configuração do ambiente de desenvolvimento
-
-### Instalação das ferramentas
+## Instalação & Execução
 
 Para executar o projeto localmente, é necessário instalar as seguintes
 ferramentas:
@@ -20,14 +18,14 @@ ferramentas:
 - [**Poetry**](#poetry)
 - [**Docker**](#docker-e-compose)
 
-#### Python
+### Python
 
 Instalação do intérprete pode ser realizada de acordo com o manual disponível na
 [documentação oficial](https://www.python.org/downloads/release/python-3120/).
 Pode ser necessário realizar a instalação através dos repositórios do
 [deadsnakes](https://github.com/deadsnakes).
 
-#### venv
+### venv
 
 Ambientes virtuais são a maneira mais convencional de isolar a instalação de
 pacotes python no contexto do sistema operacional. A ferramenta pode ser
@@ -36,7 +34,7 @@ instalada de acordo com a
 Pode ser necessário realizar a instalação através dos repositórios do
 [deadsnakes](https://github.com/deadsnakes).
 
-#### pipx
+### pipx
 
 pipx é um gerenciador de pacotes que permite a execução de apliações Python em
 ambientes isolados. A instalação da ferramenta é opcional, porém recomendada
@@ -44,14 +42,14 @@ para instalar o Python Poetry (ver próxima seção), que é utilizado para o
 gerenciamento de dependências do projeto. O processo de instalação está
 disponível na [documentação oficial](https://pipx.pypa.io/stable/installation/).
 
-#### Poetry
+### Poetry
 
 O Poetry é a ferramenta de gerenciamento de dependências do projeto; pode ser
 instalada de acordo com o manual encontrado na
 [documentação oficial](https://python-poetry.org/docs/#installation);
 recomenda-se realizar a instalação através do `pipx`.
 
-#### Docker e Compose
+### Docker e Compose
 
 Docker e a ferramenta auxiliar Compose são utilizados para isolar a execução de
 processos e aplicações em máquinas virtualizadas separadamente do ambiente do
@@ -100,91 +98,3 @@ flask run
 ```
 
 A aplicação estará disponível em no endereço `127.0.0.1:5000`.
-
-## pre-commit
-
-O projeto é configurado para executar uma checagem rápida do código antes de
-cada commit no controle de versão. Para habilitar os _hooks_, basta executar o
-comando de instalação:
-
-```bash
-# Com o ambiente virtual ativo e após instalar as dependências do projeto (poetry install)
-pre-commit install
-```
-
-## Testes unitários
-
-### Estrutura
-
-O repositório do projeto é disposto de acordo com a estrutura a seguir:
-
-```
-.
-├── metrify
-│   ├── hello
-│   │   ├── __init__.py
-│   │   ├── strategies.py
-│   │   └── routes.py
-│   ├── __init__.py
-│   └── metrify.py
-├── poetry.lock
-├── pyproject.toml
-├── README.md
-├── tests
-│   ├── hello
-│   │   ├── __init__.py
-│   │   └── test_strategies.py
-│   └── __init__.py
-└── tox.ini
-```
-
-Onde os arquivos de teste no diretório `tests/` devem espelhar a disposição dos
-arquivos no diretório-fonte (`metrify/`).
-
-- A estrutura de diretórios deve ser identica aos pacotes de código de serviço;
-  a nomenclatura dos arquivos de teste deve seguir o padrão "test_\<src\>.py",
-  onde "src" refere-se ao nome do arquivo que está sendo testado.
-
-- A estrutura do código de teste deve espelhar o código que está sendo testado;
-  a nomenclatura das funções de teste deve seguir o padrão "test_\<src\>.py",
-  onde "src" refere-se ao nome da função que está sendo testada. ex.:
-
-```python
-# file: tests.hello.test_strategies
-
-from metrify.hello.strategies import hello
-
-def test_hello():
-    """Returns 'Hello, World!'"""
-    assert hello() == "Hello, World!"
-```
-
-### Executando testes e checagem com tox
-
-O projeto está configurado para realizar a execução dos testes, formatação,
-linting e checagem através do [pytest](https://docs.pytest.org/en/8.2.x/),
-[autopep8](https://pypi.org/project/autopep8/), [pylint](https://pylint.org/) e
-[mypy](https://mypy-lang.org/), e automatizado através do
-[tox](https://tox.wiki/en/4.15.0/).
-
-É possível executar todos as checagens do sistema através do tox (via Poetry):
-
-```bash
-poetry run tox
-```
-
-Executar etapas do processo de checagem separadamente:
-
-```bash
-poetry run pytest                   # testes
-poetry run pylint metrify tests     # linter
-poetry run mypy metrify tests       # type check
-```
-
-Ou em arquivos individuais:
-
-```bash
-poetry run pylint metrify/hello/strategies.py
-poetry run pytest tests/hello/test_strategies.py
-...
-```

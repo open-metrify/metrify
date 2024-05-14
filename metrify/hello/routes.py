@@ -11,5 +11,9 @@ from metrify.hello.strategies import hello as hello_strategy
 
 @bp.route("/hello")
 def hello() -> Response:
-    """Status Code 200 HELLO, WORLD!"""
+    """
+    Rota publicamente acessível do módulo `hello`.
+
+    :statuscode 200: HELLO, WORLD!
+    """
     return jsonify(hello_strategy())
