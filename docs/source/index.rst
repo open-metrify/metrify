@@ -26,8 +26,6 @@ de dados através do consumo da API do *Github*.
 :doc:`api`
   Documentação das rotas de API acessíveis.
 
-.. quqm sabe adicionar uma seção adereçando o GraohQL
-
 .. toctree::
    :hidden:
 

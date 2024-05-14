@@ -1,8 +1,7 @@
 API -- Rotas publicamente acessíveis
 ====================================
 
-.. automodule:: metrify.hello.routes
-   :synopsis: Rotas publicamente acessíveis
+.. TODO: separar por modulo em diretorios ?
 
-   .. autoflask:: metrify:create_app()
-      :blueprints: hello
+.. autoflask:: metrify:create_app()
+   :blueprints: hello
