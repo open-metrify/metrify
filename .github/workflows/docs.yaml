@@ -1,5 +1,4 @@
-n_buildame: Publish Documentation
-
+name: Publish Documentation
 
 on:
   push:
