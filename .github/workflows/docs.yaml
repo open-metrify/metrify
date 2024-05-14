@@ -1,4 +1,5 @@
-name: Publish Documentation
+n_buildame: Publish Documentation
+
 
 on:
   push:
@@ -29,7 +30,7 @@ jobs:
           mkdir gh-pages
           touch gh-pages/.nojekyll
           cd docs/
-          make html
+          poetry run make html
           cp -r build/* ../gh-pages/        
       - name: Deploy documentation
         if: ${{ github.event_name == 'push' }}
