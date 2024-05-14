@@ -3,6 +3,8 @@ name: Publish Documentation
 on:
   push:
     tags: '*'
+    branches:
+      - main
   pull_request:
     branches:
       - main
