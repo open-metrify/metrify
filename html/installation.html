@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instalação &mdash; Documentação metrify </title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=8946c2f5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=000972dd"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Buscar" href="search.html" />
+    <link rel="next" title="impl - Documentação interna de implementação" href="impl/index.html" />
+    <link rel="prev" title="Welcome to metrify’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            metrify
+          </a>
+              <div class="version">
+                0.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Pesquisar documentos" aria-label="Pesquisar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Instalação</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#instalacao-das-ferramentas">Instalação das ferramentas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#python">Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#venv">venv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pipx">pipx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#poetry">Poetry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker-e-compose">Docker e Compose</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#instalacao-das-dependencias-do-projeto">Instalação das dependências do projeto</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#executando-a-aplicacao-localmente">Executando a aplicação localmente</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pre-commit">pre-commit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testes-unitarios">Testes unitários</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#estrutura">Estrutura</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#executando-testes-e-checagem-com-tox">Executando testes e checagem com tox</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="impl/index.html">impl - Documentação interna de implementação</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Menu de navegação móvel" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">metrify</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Navegação da página">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Instalação</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/installation.rst.txt" rel="nofollow"> Ver código-fonte da página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="instalacao">
+<h1>Instalação<a class="headerlink" href="#instalacao" title="Link para este cabeçalho"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link para este cabeçalho"></a></h2>
+<p>Esta página descreve o processo de instalação, configuração e execução local da
+aplicação.</p>
+<section id="instalacao-das-ferramentas">
+<h3>Instalação das ferramentas<a class="headerlink" href="#instalacao-das-ferramentas" title="Link para este cabeçalho"></a></h3>
+<p>Para executar o projeto localmente, é necessário instalar as seguintes
+ferramentas:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="#python">Python (^3.12)</a></p></li>
+<li><p><a class="reference external" href="#venv">venv</a></p></li>
+<li><p><a class="reference external" href="#pipx">pipx (opcional porém recomendado)</a></p></li>
+<li><p><a class="reference external" href="#poetry">Poetry</a></p></li>
+<li><p><a class="reference external" href="#docker-e-compose">Docker</a></p></li>
+</ul>
+<section id="python">
+<h4>Python<a class="headerlink" href="#python" title="Link para este cabeçalho"></a></h4>
+<p>Instalação do intérprete pode ser realizada de acordo com o manual
+disponível na <a class="reference external" href="https://www.python.org/downloads/release/python-3120/">documentação
+oficial</a>. Pode
+ser necessário realizar a instalação através dos repositórios do
+<a class="reference external" href="https://github.com/deadsnakes">deadsnakes</a>.</p>
+</section>
+<section id="venv">
+<h4>venv<a class="headerlink" href="#venv" title="Link para este cabeçalho"></a></h4>
+<p>Ambientes virtuais são a maneira mais convencional de isolar a
+instalação de pacotes python no contexto do sistema operacional. A
+ferramenta pode ser instalada de acordo com a <a class="reference external" href="https://virtualenv.pypa.io/en/stable/installation.html">documentação
+oficial</a>.
+Pode ser necessário realizar a instalação através dos repositórios do
+<a class="reference external" href="https://github.com/deadsnakes">deadsnakes</a>.</p>
+</section>
+<section id="pipx">
+<h4>pipx<a class="headerlink" href="#pipx" title="Link para este cabeçalho"></a></h4>
+<p>pipx é um gerenciador de pacotes que permite a execução de apliações
+Python em ambientes isolados. A instalação da ferramenta é opcional,
+porém recomendada para instalar o Python Poetry (ver próxima seção), que
+é utilizado para o gerenciamento de dependências do projeto. O processo
+de instalação está disponível na <a class="reference external" href="https://pipx.pypa.io/stable/installation/">documentação
+oficial</a>.</p>
+</section>
+<section id="poetry">
+<h4>Poetry<a class="headerlink" href="#poetry" title="Link para este cabeçalho"></a></h4>
+<p>O Poetry é a ferramenta de gerenciamento de dependências do projeto;
+pode ser instalada de acordo com o manual encontrado na <a class="reference external" href="https://python-poetry.org/docs/#installation">documentação
+oficial</a>; recomenda-se
+realizar a instalação através do <code class="docutils literal notranslate"><span class="pre">pipx</span></code>.</p>
+</section>
+<section id="docker-e-compose">
+<h4>Docker e Compose<a class="headerlink" href="#docker-e-compose" title="Link para este cabeçalho"></a></h4>
+<p>Docker e a ferramenta auxiliar Compose são utilizados para isolar a
+execução de processos e aplicações em máquinas virtualizadas
+separadamente do ambiente do sistema operacional. Para instalar as
+ferramentas, siga os passos especificados para a distribuição do seu SO
+de acordo com a <a class="reference external" href="https://docs.docker.com/desktop/install/linux-install/">documentação
+oficial</a>.</p>
+</section>
+</section>
+<section id="instalacao-das-dependencias-do-projeto">
+<h3>Instalação das dependências do projeto<a class="headerlink" href="#instalacao-das-dependencias-do-projeto" title="Link para este cabeçalho"></a></h3>
+<p>Para instalar as dependências do projeto basta inicializar o ambiente
+virtual e executar o comando de instalação:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+poetry<span class="w"> </span>install
+</pre></div>
+</div>
+</section>
+</section>
+<section id="executando-a-aplicacao-localmente">
+<h2>Executando a aplicação localmente<a class="headerlink" href="#executando-a-aplicacao-localmente" title="Link para este cabeçalho"></a></h2>
+<blockquote>
+<div><p>Antes de inicializar a aplicação, é necessário ativar o container do
+banco de dados do projeto no <a class="reference external" href="#docker-e-compose">docker</a>. Para
+verificar o status atual do container execute o comando
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>ps
+CONTAINER<span class="w"> </span>ID<span class="w">   </span>IMAGE<span class="w">                  </span>COMMAND<span class="w">                  </span>CREATED<span class="w">        </span>STATUS<span class="w">             </span>PORTS<span class="w">                                       </span>NAMES
+918266dc5863<span class="w">   </span>mongo<span class="w">                  </span><span class="s2">&quot;docker-entrypoint.s…&quot;</span><span class="w">   </span><span class="m">6</span><span class="w"> </span>days<span class="w"> </span>ago<span class="w">     </span>Up<span class="w"> </span>About<span class="w"> </span>an<span class="w"> </span>hour<span class="w">   </span><span class="m">27017</span>/tcp<span class="w">                                   </span>metrify_mongo_1
+</pre></div>
+</div>
+<p>Caso o container do metrify não conste na lista apresentada, execute
+o <a class="reference external" href="#docker-e-compose">compose</a> (dentro do projeto) para ativar os
+containers:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dependendo da versão do Docker instalada no sistema, execute &quot;docker compose&quot; ou &quot;docker-compose&quot;, se o compose for instalado separadamente. Consultar documentação oficial.</span>
+
+docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>mongo
+Creating<span class="w"> </span>metrify_mongo_1<span class="w"> </span>...<span class="w"> </span><span class="k">done</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Após a instalação de todos os recursos, certifique-se de ativar o
+ambiente virtual para executar o servidor Flask:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+flask<span class="w"> </span>run
+</pre></div>
+</div>
+<p>A aplicação estará disponível em no endereço <code class="docutils literal notranslate"><span class="pre">127.0.0.1:5000</span></code>.</p>
+</section>
+<section id="pre-commit">
+<h2>pre-commit<a class="headerlink" href="#pre-commit" title="Link para este cabeçalho"></a></h2>
+<p>O projeto é configurado para executar uma checagem rápida do código
+antes de cada commit no controle de versão. Para habilitar os <em>hooks</em>,
+basta executar o comando de instalação:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Com o ambiente virtual ativo e após instalar as dependências do projeto (poetry install)</span>
+pre-commit<span class="w"> </span>install
+</pre></div>
+</div>
+</section>
+<section id="testes-unitarios">
+<h2>Testes unitários<a class="headerlink" href="#testes-unitarios" title="Link para este cabeçalho"></a></h2>
+<section id="estrutura">
+<h3>Estrutura<a class="headerlink" href="#estrutura" title="Link para este cabeçalho"></a></h3>
+<p>O repositório do projeto é disposto de acordo com a estrutura a seguir:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.
+├── metrify
+│   ├── hello
+│   │   ├── __init__.py
+│   │   ├── strategies.py
+│   │   └── routes.py
+│   ├── __init__.py
+│   └── metrify.py
+├── poetry.lock
+├── pyproject.toml
+├── README.md
+├── tests
+│   ├── hello
+│   │   ├── __init__.py
+│   │   └── test_strategies.py
+│   └── __init__.py
+└── tox.ini
+</pre></div>
+</div>
+<p>Onde os arquivos de teste no diretório <code class="docutils literal notranslate"><span class="pre">tests/</span></code> devem espelhar a
+disposição dos arquivos no diretório-fonte (<code class="docutils literal notranslate"><span class="pre">metrify/</span></code>).</p>
+<ul class="simple">
+<li><p>A estrutura de diretórios deve ser identica aos pacotes de código de
+serviço; a nomenclatura dos arquivos de teste deve seguir o padrão
+“test_&lt;src&gt;.py”, onde “src” refere-se ao nome do arquivo que está
+sendo testado.</p></li>
+<li><p>A estrutura do código de teste deve espelhar o código que está sendo
+testado; a nomenclatura das funções de teste deve seguir o padrão
+“test_&lt;src&gt;.py”, onde “src” refere-se ao nome da função que está
+sendo testada. ex.:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file: tests.hello.test_strategies</span>
+
+<span class="kn">from</span> <span class="nn">metrify.hello.strategies</span> <span class="kn">import</span> <span class="n">hello</span>
+
+<span class="k">def</span> <span class="nf">test_hello</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns &#39;Hello, World!&#39;&quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">hello</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Hello, World!&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="executando-testes-e-checagem-com-tox">
+<h3>Executando testes e checagem com tox<a class="headerlink" href="#executando-testes-e-checagem-com-tox" title="Link para este cabeçalho"></a></h3>
+<p>O projeto está configurado para realizar a execução dos testes,
+formatação, linting e checagem através do
+<a class="reference external" href="https://docs.pytest.org/en/8.2.x/">pytest</a>,
+<a class="reference external" href="https://pypi.org/project/autopep8/">autopep8</a>,
+<a class="reference external" href="https://pylint.org/">pylint</a> e <a class="reference external" href="https://mypy-lang.org/">mypy</a>, e
+automatizado através do <a class="reference external" href="https://tox.wiki/en/4.15.0/">tox</a>.</p>
+<p>É possível executar todos as checagens do sistema através do tox (via
+Poetry):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>run<span class="w"> </span>tox
+</pre></div>
+</div>
+<p>Executar etapas do processo de checagem separadamente:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>run<span class="w"> </span>pytest<span class="w">                   </span><span class="c1"># testes</span>
+poetry<span class="w"> </span>run<span class="w"> </span>pylint<span class="w"> </span>metrify<span class="w"> </span>tests<span class="w">     </span><span class="c1"># linter</span>
+poetry<span class="w"> </span>run<span class="w"> </span>mypy<span class="w"> </span>metrify<span class="w"> </span>tests<span class="w">       </span><span class="c1"># type check</span>
+</pre></div>
+</div>
+<p>Ou em arquivos individuais:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>run<span class="w"> </span>pylint<span class="w"> </span>metrify/hello/strategies.py
+poetry<span class="w"> </span>run<span class="w"> </span>pytest<span class="w"> </span>tests/hello/test_strategies.py
+...
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Rodapé">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to metrify’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="impl/index.html" class="btn btn-neutral float-right" title="impl - Documentação interna de implementação" accesskey="n" rel="next">Próximo <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Direitos autorais 2024, Pedro Binotto, Eric Fernandes Evaristo.</p>
+  </div>
+
+  Compilado com <a href="https://www.sphinx-doc.org/">Sphinx</a> usando um
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    fornecido por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
