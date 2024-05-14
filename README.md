@@ -1,6 +1,7 @@
 # metrify 📊📈📉
 
 ![Tox](https://github.com/PedroBinotto/metrify/actions/workflows/tests.yaml/badge.svg)
+![Docs](https://github.com/PedroBinotto/metrify/actions/workflows/docs.yaml/badge.svg)
 
 Sistema de coleta automática de métricas com base na API do Github.
 
