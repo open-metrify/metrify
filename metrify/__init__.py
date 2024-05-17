@@ -6,7 +6,13 @@ from flask import Flask
 from flask_pymongo import PyMongo
 from flask_apscheduler import APScheduler
 from metrify.config import Config
+from gql import Client
+import os
 
+with open("{}/graphql/github.schema.graphql".format(os.path.dirname(__file__))) as f:
+    github_schema = f.read()
+
+client = Client(schema=github_schema)
 mongo: PyMongo = PyMongo()
 apscheduler: APScheduler = APScheduler()
 
