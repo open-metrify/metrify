@@ -13,7 +13,8 @@ mongo: PyMongo = PyMongo()
 """:class:`PyMongo`: An instance of the database client class used to interact with the database."""
 
 apscheduler: APScheduler = APScheduler()
-""":class:`APScheduler`: An instance of the Advanced Python Scheduler class used to set events to be periodically executed."""
+""":class:`APScheduler`: An instance of the Advanced Python Scheduler class
+used to set events to be periodically executed."""
 
 
 def create_app(config_class: type[Config] = Config) -> Flask:
