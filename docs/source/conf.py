@@ -25,6 +25,9 @@ exclude_patterns = []
 
 language = "pt_BR"
 
+autodoc_typehints_format = "short"
+python_use_unqualified_type_names = True
+
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 

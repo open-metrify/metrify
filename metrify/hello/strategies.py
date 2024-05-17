@@ -1,4 +1,6 @@
 """
+metrify/hello/strategies.py
+
 The "strategies.py" module implements the "backend" for the endpoints exposed
 by the package's "routes.py".
 """
