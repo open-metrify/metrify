@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>metrify – Módulo raiz do projeto &mdash; Documentação metrify </title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=8946c2f5"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=000972dd"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Buscar" href="../../search.html" />
+    <link rel="next" title="hello – Módulo de Demonstração e Exemplificação Técnica" href="hello/index.html" />
+    <link rel="prev" title="impl - Documentação interna de implementação" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            metrify
+          </a>
+              <div class="version">
+                0.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Pesquisar documentos" aria-label="Pesquisar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Instalação</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">impl - Documentação interna de implementação</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">metrify</span></code> – Módulo raiz do projeto</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hello/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">hello</span></code> – Módulo de Demonstração e Exemplificação Técnica</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">model</span></code> – Modelos de entidade da aplicação</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metrify.config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metrify.apscheduler"><code class="docutils literal notranslate"><span class="pre">apscheduler</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metrify.create_app"><code class="docutils literal notranslate"><span class="pre">create_app()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metrify.mongo"><code class="docutils literal notranslate"><span class="pre">mongo</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API – Rotas publicamente acessíveis</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Menu de navegação móvel" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">metrify</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Navegação da página">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">impl - Documentação interna de implementação</a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">metrify</span></code> – Módulo raiz do projeto</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/impl/metrify/index.rst.txt" rel="nofollow"> Ver código-fonte da página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="metrify-modulo-raiz-do-projeto">
+<h1><a class="reference internal" href="#module-metrify" title="metrify"><code class="xref py py-mod docutils literal notranslate"><span class="pre">metrify</span></code></a> – Módulo raiz do projeto<a class="headerlink" href="#metrify-modulo-raiz-do-projeto" title="Link para este cabeçalho"></a></h1>
+<p>Sub-modules:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hello/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">hello</span></code> – Módulo de Demonstração e Exemplificação Técnica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">model</span></code> – Modelos de entidade da aplicação</a></li>
+</ul>
+</div>
+<p id="module-metrify.config">metrify/config.py</p>
+<p>Exports configuration data for the Flask application</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="metrify.config.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">metrify.config.</span></span><span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#metrify.config.Config" title="Link para esta definição"></a></dt>
+<dd><p>Configuration class for the Flask application.</p>
+<dl class="field-list">
+<dt class="field-odd">Note<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Should be used with <cite>from_object</cite></p>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">config</span> <span class="o">=</span> <span class="n">Config</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+<dt class="field-odd">Variáveis<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>MONGO_URI</strong> (<em>str</em>) – URI for the MongoDB connection</p></li>
+<li><p><strong>SCHEDULER_API_ENABLED</strong> (<em>bool</em>) – APScheduler-enabled API integration</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p id="module-metrify">metrify/__init__.py</p>
+<p>Contains initialization code for the application</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="metrify.apscheduler">
+<span class="sig-prename descclassname"><span class="pre">metrify.</span></span><span class="sig-name descname"><span class="pre">apscheduler</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">APScheduler</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;flask_apscheduler.scheduler.APScheduler</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#metrify.apscheduler" title="Link para esta definição"></a></dt>
+<dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">APScheduler</span></code>: An instance of the Advanced Python Scheduler class
+used to set events to be periodically executed.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="metrify.create_app">
+<span class="sig-prename descclassname"><span class="pre">metrify.</span></span><span class="sig-name descname"><span class="pre">create_app</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_class:</span> <span class="pre">type[~metrify.config.Config]</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'metrify.config.Config'&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Flask</span></span></span><a class="headerlink" href="#metrify.create_app" title="Link para esta definição"></a></dt>
+<dd><p>Metrify Flask Application Factory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config_class</strong> (type <a class="reference internal" href="#metrify.config.Config" title="metrify.config.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">metrify.config.Config</span></code></a>) – Config class for the Flask application</p>
+</dd>
+<dt class="field-even">Retorna<span class="colon">:</span></dt>
+<dd class="field-even"><p>The Flask application instance</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Flask</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="metrify.mongo">
+<span class="sig-prename descclassname"><span class="pre">metrify.</span></span><span class="sig-name descname"><span class="pre">mongo</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">PyMongo</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;flask_pymongo.PyMongo</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#metrify.mongo" title="Link para esta definição"></a></dt>
+<dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">PyMongo</span></code>: An instance of the database client class used to interact with the database.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Rodapé">
+        <a href="../index.html" class="btn btn-neutral float-left" title="impl - Documentação interna de implementação" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="hello/index.html" class="btn btn-neutral float-right" title="hello – Módulo de Demonstração e Exemplificação Técnica" accesskey="n" rel="next">Próximo <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Direitos autorais 2024, Pedro Binotto, Eric Fernandes Evaristo.</p>
+  </div>
+
+  Compilado com <a href="https://www.sphinx-doc.org/">Sphinx</a> usando um
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    fornecido por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
