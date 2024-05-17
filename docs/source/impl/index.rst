@@ -8,4 +8,4 @@ do sistema componentes sejam simples de descrever, testar, e documentar.
 .. toctree::
    :maxdepth: 2
 
-   hello/index
+   metrify/index
