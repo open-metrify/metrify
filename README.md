@@ -5,7 +5,7 @@
 
 Sistema de coleta automática de métricas com base na API do Github.
 
-[Documentação Completa](https://pedrobinotto.github.io/metrify/index.html)
+[Documentação Completa](https://open-metrify.github.io/metrify/index.html)
 
 ## Configuração do ambiente de desenvolvimento
 
