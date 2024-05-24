@@ -19,6 +19,7 @@ apscheduler: APScheduler = APScheduler()
 
 def create_app(config_class: type[Config] = Config) -> Flask:
     """Metrify Flask Application Factory"""
+
     app: Flask = Flask(__name__)
     app.config.from_object(config_class)
 
@@ -31,10 +32,18 @@ def create_app(config_class: type[Config] = Config) -> Flask:
     app.register_blueprint(hello_bp)
 
     # pylint: disable=import-outside-toplevel, wrong-import-position
-    from metrify.issues import bp as issues_bp
+    from metrify.github.issues import bp as github_issues_bp
 
-    app.register_blueprint(issues_bp)
+    app.register_blueprint(github_issues_bp)
+
+    # pylint: disable=import-outside-toplevel, wrong-import-position
+    from metrify.github.auth import bp as github_auth_bp
+
+    app.register_blueprint(github_auth_bp)
 
     apscheduler.start()
 
     return app
+
+
+__all__ = ["client", "mongo", "apscheduler", "create_app"]

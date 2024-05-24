@@ -2,9 +2,9 @@
 
 from flask import Blueprint
 
-bp = Blueprint("issues", __name__)
+bp = Blueprint("github-auth", __name__)
 
 # pylint: disable=wrong-import-position, cyclic-import
-from metrify.issues import jobs
+from metrify.github.auth import jobs
 
 __all__ = ["jobs"]
