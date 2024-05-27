@@ -9,12 +9,18 @@ from flask_pymongo import PyMongo
 from flask_apscheduler import APScheduler
 from metrify.config import Config
 from gql import Client
+from gql.transport.requests import RequestsHTTPTransport
 import os
 
 with open("{}/graphql/github.schema.graphql".format(os.path.dirname(__file__))) as f:
     github_schema = f.read()
 
-client = Client(schema=github_schema)
+
+graphql = Client(
+    schema=github_schema,
+)
+""":class:`Client`: An instance of th GraphQL client class used to interact with the Github API."""
+
 mongo: PyMongo = PyMongo()
 """:class:`PyMongo`: An instance of the database client class used to interact with the database."""
 
@@ -59,4 +65,5 @@ def create_app(config_class: type[Config] = Config) -> Flask:
 
     return app
 
-__all__ = ["client", "mongo", "apscheduler", "create_app"]
+
+__all__ = ["graphql", "mongo", "apscheduler", "create_app"]
