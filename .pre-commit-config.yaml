@@ -8,8 +8,7 @@ repos:
         require_serial: true
         types:
           - python
-        files:
-          metrify tests
+        exclude: '(stubs|docs)/.*'
       - id: lint
         name: Lint
         entry: poetry run pylint
@@ -17,8 +16,7 @@ repos:
         require_serial: true
         types:
           - python
-        files:
-          metrify tests
+        exclude: '(stubs|docs)/.*'
       - id: Type checks
         name: mypy
         entry: poetry run mypy
@@ -26,5 +24,4 @@ repos:
         require_serial: true
         types:
           - python
-        files:
-          metrify tests
+        exclude: '(stubs|docs)/.*'
