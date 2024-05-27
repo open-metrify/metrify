@@ -8,10 +8,11 @@ Welcome to metrify's documentation!
 
 Overview
 --------
-**metrify** é uma aplicação desenvolvida para scrum masters e equipes ágeis com 
-o propósito automatizar a coleta e processamento de métricas relacionadas ao 
-progresso de sprints e o cálculo e estimativa de rendimento com base em análise 
-estatística do histórico de dados através do consumo da API do *Github*.
+`metrify <https://github.com/open-metrify/metrify>`_ é uma aplicação 
+desenvolvida para scrum masters e equipes ágeis com o propósito automatizar a 
+coleta e processamento de métricas relacionadas ao progresso de sprints e o 
+cálculo e estimativa de rendimento com base em análise estatística do histórico 
+de dados através do consumo da API do *Github*.
 
 .. note::
    Este projeto está em fase de desenvolvimento ativo.
@@ -22,13 +23,15 @@ estatística do histórico de dados através do consumo da API do *Github*.
 :doc:`impl/index`
   Documentação compreensiva do código de implementação, organizado por módulo.
 
-.. quqm sabe adicionar uma seção adereçando o GraohQL
+:doc:`api`
+  Documentação das rotas de API acessíveis.
 
 .. toctree::
    :hidden:
 
    installation
    impl/index
+   api
 
 
 

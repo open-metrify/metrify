@@ -1,4 +1,6 @@
 """
+metrify/__init__.py
+
 Contains initialization code for the application
 """
 
@@ -14,11 +16,23 @@ with open("{}/graphql/github.schema.graphql".format(os.path.dirname(__file__))) 
 
 client = Client(schema=github_schema)
 mongo: PyMongo = PyMongo()
+""":class:`PyMongo`: An instance of the database client class used to interact with the database."""
+
 apscheduler: APScheduler = APScheduler()
+""":class:`APScheduler`: An instance of the Advanced Python Scheduler class
+used to set events to be periodically executed."""
 
 
 def create_app(config_class: type[Config] = Config) -> Flask:
-    """Metrify Flask Application Factory"""
+    """
+    Metrify Flask Application Factory
+
+    :param config_class: Config class for the Flask application
+    :type config_class: type :class:`metrify.config.Config`
+
+    :return: The Flask application instance
+    :rtype: :class:`Flask`
+    """
 
     app: Flask = Flask(__name__)
     app.config.from_object(config_class)
@@ -44,6 +58,5 @@ def create_app(config_class: type[Config] = Config) -> Flask:
     apscheduler.start()
 
     return app
-
 
 __all__ = ["client", "mongo", "apscheduler", "create_app"]

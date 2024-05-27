@@ -1,4 +1,6 @@
 """
+metrify/hello/__init__.py
+
 The `hello` package serves the sole purpose of demonstrating good practices and
 design patterns that should be enforced in the project's code and structuring.
 

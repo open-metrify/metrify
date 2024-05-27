@@ -1,4 +1,6 @@
 """
+metrify/config.py
+
 Exports configuration data for the Flask application
 """
 
@@ -11,10 +13,16 @@ class Config:
     """
     Configuration class for the Flask application.
 
-    Should be used with `from_object`::
+    :note: Should be used with `from_object`
 
-        config = Config
-        app.config.from_object(config)
+    :example:
+        >>> config = Config
+        >>> app.config.from_object(config)
+
+    :ivar MONGO_URI: URI for the MongoDB connection
+    :vartype MONGO_URI: str
+    :ivar SCHEDULER_API_ENABLED: APScheduler-enabled API integration
+    :vartype SCHEDULER_API_ENABLED: bool
     """
 
     SCHEDULER_API_ENABLED = True

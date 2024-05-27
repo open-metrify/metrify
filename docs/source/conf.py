@@ -13,12 +13,20 @@ version = "0.1.0"
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ["sphinx_rtd_theme", "sphinx.ext.doctest", "sphinx.ext.autodoc"]
+extensions = [
+    "sphinx_rtd_theme",
+    "sphinx.ext.doctest",
+    "sphinx.ext.autodoc",
+    "sphinxcontrib.autohttp.flask",
+]
 
 templates_path = ["_templates"]
 exclude_patterns = []
 
 language = "pt_BR"
+
+autodoc_typehints_format = "short"
+python_use_unqualified_type_names = True
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
