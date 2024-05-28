@@ -1,5 +1,5 @@
 :mod:`exception` -- Exceções do sistema
-================================================
+=======================================
 
 .. automodule:: metrify.exception
    :synopsis: Exceções do sistema
