@@ -20,11 +20,11 @@ def generate_github_jwt(
     :type client_id: str
 
     :param pem_path: Path to the PEM file containing a private key for the
-    Github App.
+        Github App.
     :type pem_path: str
 
     :param expiration_time: Expiration time for the JWT, in seconds; 10 minutes
-    maximum.
+        maximum.
     :type expiration_time: int
 
     :return: JWT to authenticate the Github App

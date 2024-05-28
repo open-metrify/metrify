@@ -3,9 +3,9 @@ impl - Documentação interna de implementação
 
 O código do **metrify** segue um esquema de padronização orientado a funções e 
 mantém uma aplicação sem estado próprio, para garantir que os diferentes 
-do sistema componentes sejam simples de descrever, testar, e documentar.
+componentes do sistema sejam simples de descrever, testar, e documentar.
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    metrify/index

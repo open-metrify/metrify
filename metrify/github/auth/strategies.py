@@ -20,7 +20,7 @@ def get_access_token(jwt: str, installation_id: str) -> str:
     :param installation_id: Github App installation ID
     :type installation_id: str
 
-    :return: Github installation access token
+    :return: Github App installation access token
     :rtype: str
     """
 

@@ -9,16 +9,17 @@ from flask import current_app
 from gql.transport.requests import RequestsHTTPTransport
 from metrify import apscheduler, graphql
 from metrify.exception import ContextException
-from metrify.github.auth.strategies import get_access_token as authenticate_strat
+from metrify.github.auth.strategies import get_access_token
 from metrify.github.utils import generate_github_jwt
 
 
 @apscheduler.task(
-    "interval", id="github.authenticate", seconds=10, misfire_grace_time=900
+    "interval", id="github.authenticate", seconds=540, misfire_grace_time=900
 )
 def authenticate() -> None:
     """
     Periodically resets the Github API access token to keep the app authenticated.
+    Scheduled to run every 9 minutes.
 
     :raises ContextException: if app context is not accessible from scheduler instance
     """
@@ -31,11 +32,10 @@ def authenticate() -> None:
         config = current_app.config
 
         jwt = generate_github_jwt(
-            config["GITHUB_CLIENT_ID"], config["GITHUB_API_KEY"], 540
+            config["GITHUB_CLIENT_ID"], config["GITHUB_API_KEY_PEM"], 540
         )
 
-        access_token = authenticate_strat(
-            jwt, config["GITHUB_INSTALLATION_ID"])
+        access_token = get_access_token(jwt, config["GITHUB_INSTALLATION_ID"])
 
         graphql.transport = RequestsHTTPTransport(
             url="https://api.github.com/graphql",
