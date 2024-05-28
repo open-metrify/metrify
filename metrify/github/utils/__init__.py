@@ -1,6 +1,7 @@
 """
-This module contains a function that generates a JSON Web Token (JWT) for
-authenticating with the GitHub API.
+metrify/github/utils/__init__.py
+
+This module exports utility functions for integrating with the Github API.
 """
 
 from time import time
@@ -12,15 +13,18 @@ def generate_github_jwt(
     client_id: str, pem_path: str, expiration_time: int = 600
 ) -> str:
     """
-    Generates a JSON Web Token (JWT) for authenticating as a GitHub App from client ID and PEM file.
+    Generates a JSON Web Token (JWT) for authenticating as a GitHub App from
+    client ID and PEM file.
 
     :param client_id: Client ID for the Github App
     :type client_id: str
 
-    :param pem_path: Path to the PEM file containing a private key for the Github App.
+    :param pem_path: Path to the PEM file containing a private key for the
+    Github App.
     :type pem_path: str
 
-    :param expiration_time: Expiration time for the JWT, in seconds; 10 minutes maximum.
+    :param expiration_time: Expiration time for the JWT, in seconds; 10 minutes
+    maximum.
     :type expiration_time: int
 
     :return: JWT to authenticate the Github App

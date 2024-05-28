@@ -4,25 +4,27 @@ metrify/__init__.py
 Contains initialization code for the application
 """
 
+import os
 from flask import Flask
 from flask_pymongo import PyMongo
 from flask_apscheduler import APScheduler
-from metrify.config import Config
 from gql import Client
-from gql.transport.requests import RequestsHTTPTransport
-import os
+from metrify.config import Config
 
-with open("{}/graphql/github.schema.graphql".format(os.path.dirname(__file__))) as f:
+with open(
+    f"{os.path.dirname(__file__)}/graphql/github.schema.graphql", encoding="utf-8"
+) as f:
     github_schema = f.read()
-
 
 graphql = Client(
     schema=github_schema,
 )
-""":class:`Client`: An instance of th GraphQL client class used to interact with the Github API."""
+""":class:`Client`: An instance of th GraphQL client class used to interact with
+the Github API."""
 
 mongo: PyMongo = PyMongo()
-""":class:`PyMongo`: An instance of the database client class used to interact with the database."""
+""":class:`PyMongo`: An instance of the database client class used to interact
+with the database."""
 
 apscheduler: APScheduler = APScheduler()
 """:class:`APScheduler`: An instance of the Advanced Python Scheduler class
