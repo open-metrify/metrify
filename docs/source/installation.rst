@@ -68,6 +68,15 @@ oficial <https://docs.docker.com/desktop/install/linux-install/>`__.
 Instalação das dependências do projeto
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Antes de instalar qualquer módulo adicional no intérprete python, é importante
+isolar o ambiente da aplicação através de um ambiente virutal. Caso seja a 
+primeira vez executando o sistema, talvez seja necessário criar os arquivos do 
+ambiente local:
+
+.. code:: bash
+
+   python3.12 -m venv venv
+
 Para instalar as dependências do projeto basta inicializar o ambiente
 virtual e executar o comando de instalação:
 
@@ -223,9 +232,12 @@ disposição dos arquivos no diretório-fonte (``metrify/``).
    sendo testado.
 
 -  A estrutura do código de teste deve espelhar o código que está sendo
-   testado; a nomenclatura das funções de teste deve seguir o padrão
-   “test_<src>.py”, onde “src” refere-se ao nome da função que está
-   sendo testada. ex.:
+   testado; o arquivo de teste deve seguir o padrão de um suite de testes (em
+   forma de classe) por função testada, seguindo a nomenclatura "Test<Subject>",
+   onde "Subject" refere-se ao nome função sendo testada, em
+   `PascalCase <https://www.theserverside.com/definition/Pascal-case/>`__; cada
+   caso de teste deve ser representado por um método da classe, com um nome
+   descritivo.
 
 .. code:: python
 
@@ -233,9 +245,12 @@ disposição dos arquivos no diretório-fonte (``metrify/``).
 
    from metrify.hello.strategies import hello
 
-   def test_hello():
-       """Returns 'Hello, World!'"""
-       assert hello() == "Hello, World!"
+   class TestHello:
+       """Test suite for `hello` function"""
+
+       def test_hello(self):
+           """Returns 'Hello, World!'"""
+           assert hello() == "Hello, World!"
 
 Executando testes e checagem com tox
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
