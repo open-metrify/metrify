@@ -32,8 +32,8 @@ class Config:
         integration
     :vartype GITHUB_INSTALLATION_ID: str
 
-    :ivar GITHUB_API_KEY_PEM: Path to the `.pem` file containing the private key
-        to the Github App
+    :ivar GITHUB_API_KEY_PEM: Path to the `.pem` file containing the private
+        key to the Github App
     :vartype GITHUB_API_KEY_PEM: str
     """
 
