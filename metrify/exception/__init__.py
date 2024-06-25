@@ -5,14 +5,25 @@ This module exports application-related custom exceptions.
 """
 
 
-class ContextException(Exception):
+class ContextError(Exception):
     """
     Exception relating to the Flask app context.
     """
 
     def __str__(self) -> str:
         return """
-Invalid call to context-related resources while working outside of Flask application context"""
+Invalid call to context-related resources while working outside of Flask
+application context"""
 
 
-__all__ = ["ContextException"]
+class InvalidArgumentError(Exception):
+    """
+    Invalid argument
+    """
+
+    def __str__(self) -> str:
+        return """
+Invalid argument"""
+
+
+__all__ = ["ContextError"]

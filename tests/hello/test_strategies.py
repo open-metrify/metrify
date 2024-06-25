@@ -6,5 +6,5 @@ from metrify.hello.strategies import hello
 
 
 def test_hello() -> None:
-    """Returns 'Hello, World!'"""
+    """Should return 'Hello, World!'"""
     assert hello() == "Hello, World!"

@@ -12,7 +12,8 @@ from gql import Client
 from metrify.config import Config
 
 with open(
-    f"{os.path.dirname(__file__)}/graphql/github.schema.graphql", encoding="utf-8"
+    f"{os.path.dirname(__file__)}/graphql/github.schema.graphql",
+    encoding="utf-8"
 ) as f:
     github_schema = f.read()
 
