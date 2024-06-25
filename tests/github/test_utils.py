@@ -1,10 +1,8 @@
-# mypy: disable-error-code="no-untyped-def, type-arg, misc"
-
 """
 Test suite for metrify.github.utils
 """
 
-from typing import Generator, Tuple
+from typing import Generator
 from unittest.mock import MagicMock, patch, mock_open
 from jwt import JWT
 from jwt.exceptions import UnsupportedKeyTypeError
@@ -16,11 +14,8 @@ from metrify.exception import InvalidArgumentError
 from metrify.github.utils import generate_github_jwt
 
 
-Data = Tuple[str, str, int]
-
-
 @pytest.fixture(name="data")
-def setup() -> Generator[Data, None, None]:
+def setup() -> Generator[tuple, None, None]:
     """Setup and Teardown"""
 
     client_id = "test_client_id"
@@ -32,7 +27,7 @@ def setup() -> Generator[Data, None, None]:
 @patch("metrify.github.utils.jwk_from_pem")
 @patch("metrify.github.utils.time")
 def test_generate_github_jwt_success(
-    mock_time: MagicMock, mock_jwk: MagicMock, data: Data
+    mock_time: MagicMock, mock_jwk: MagicMock, data: tuple
 ):
     """Should correctly make calls to generate, encode, and return the JWT"""
 
@@ -77,7 +72,7 @@ def test_generate_github_jwt_file_not_found(
         mock_open_file: MagicMock,
         mock_time: MagicMock,
         mock_jwk: MagicMock,
-        data: Data):
+        data: tuple):
     """
     Should halt execution and return 'None' in case an invalid PEM path is
     passed to the function
@@ -100,7 +95,7 @@ def test_generate_github_jwt_file_not_found(
 @patch("metrify.github.utils.jwk_from_pem")
 @patch("metrify.github.utils.time")
 def test_generate_github_jwt_invalid_key(
-    mock_time: MagicMock, mock_jwk: MagicMock, data: Data
+    mock_time: MagicMock, mock_jwk: MagicMock, data: tuple
 ):
     """
     Should halt execution and return 'None' in case an invalid PEM file is
@@ -133,7 +128,7 @@ def test_generate_github_jwt_invalid_expiration(
         mock_open_file: MagicMock,
         mock_time: MagicMock,
         mock_jwk: MagicMock,
-        data: Data):
+        data: tuple):
     """
     Should halt execution and return 'None' in case an invalid execution time
     parameter is passed to the function

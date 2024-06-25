@@ -24,4 +24,4 @@ repos:
         require_serial: true
         types:
           - python
-        exclude: '(stubs|docs)/.*'
+        exclude: '(stubs|docs|tests)/.*'

@@ -1,5 +1,3 @@
-# mypy: disable-error-code="no-untyped-def, type-arg, misc"
-
 """
 Test suite for metrify.github.auth.strategies
 """
