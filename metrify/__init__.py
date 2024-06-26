@@ -4,23 +4,34 @@ metrify/__init__.py
 Contains initialization code for the application
 """
 
-import os
+
+import json
+import logging.config
+import logging.handlers
+from pathlib import Path
 from flask import Flask
 from flask_pymongo import PyMongo
 from flask_apscheduler import APScheduler
 from gql import Client
+
 from metrify.config import Config
 
-with open(
-    f"{os.path.dirname(__file__)}/graphql/github.schema.graphql",
-    encoding="utf-8"
-) as f:
-    github_schema = f.read()
+with open(Path("metrify/logging/config.json"), encoding="utf-8") \
+        as log_c:
+    logger_config = json.load(log_c)
+    logging.config.dictConfig(logger_config)
+
+with open(Path("metrify/graphql/github.schema.graphql"), encoding="utf-8") \
+        as gql_c:
+    github_schema = gql_c.read()
+
+logger = logging.getLogger(__name__)
+""":class:`Logger`: The Logger instance for the application."""
 
 graphql = Client(
     schema=github_schema,
 )
-""":class:`Client`: An instance of th GraphQL client class used to interact
+""":class:`Client`: An instance of the GraphQL client class used to interact
 with the Github API."""
 
 mongo: PyMongo = PyMongo()
@@ -69,4 +80,4 @@ def create_app(config_class: type[Config] = Config) -> Flask:
     return app
 
 
-__all__ = ["graphql", "mongo", "apscheduler", "create_app"]
+__all__ = ["graphql", "mongo", "apscheduler", "create_app", "logger"]
