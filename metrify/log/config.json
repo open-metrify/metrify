@@ -1,22 +1,36 @@
 {
   "version": 1,
   "disable_existing_loggers": false,
-  "filters": {},
+  "filters": {
+    "nonErrorFilter": {
+      "()": "metrify.log.NonErrorFilter"
+    }
+  },
   "formatters": {
     "simple": {
-      "format": "%(levelname)s: %(message)s"
-    },
-    "detailed": {
-      "format": "[%(levelname)s|%(module)s|L%(lineno)d] %(asctime)s: %(message)s",
+      "format": "%(levelname)s: %(message)s",
       "datefmt": "%Y-%m-%dT%H:%M:%S%z"
+    },
+    "json": {
+      "()": "metrify.log.JSONFormatter",
+      "fmt_keys": {
+        "level": "levelname",
+        "message": "message",
+        "timestamp": "timestamp",
+        "logger": "name",
+        "module": "module",
+        "function": "funcName",
+        "line": "lineno",
+        "thread_name": "threadName"
+      }
     }
   },
   "handlers": {
     "file": {
       "class": "logging.handlers.RotatingFileHandler",
       "level": "DEBUG",
-      "formatter": "detailed",
-      "filename": "logs/metrify.log",
+      "formatter": "json",
+      "filename": "logs/metrify.jsonl",
       "maxBytes": 10000000,
       "backupCount": 3
     },
@@ -24,7 +38,10 @@
       "class": "logging.StreamHandler",
       "level": "DEBUG",
       "formatter": "simple",
-      "stream": "ext://sys.stdout"
+      "stream": "ext://sys.stdout",
+      "filters": [
+        "nonErrorFilter"
+      ]
     },
     "stderr": {
       "class": "logging.StreamHandler",

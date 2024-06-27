@@ -16,8 +16,7 @@ from gql import Client
 
 from metrify.config import Config
 
-with open(Path("metrify/logging/config.json"), encoding="utf-8") \
-        as log_c:
+with open(Path("metrify/log/config.json"), encoding="utf-8") as log_c:
     logger_config = json.load(log_c)
     logging.config.dictConfig(logger_config)
 
