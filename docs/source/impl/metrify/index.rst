@@ -6,10 +6,11 @@ Sub-modules:
 .. toctree::
    :maxdepth: 2
 
-   hello/index
-   model/index
-   github/index
    exception/index
+   hello/index
+   github/index
+   log/index
+   model/index
 
 .. automodule:: metrify.config
    :members: Config
