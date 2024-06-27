@@ -5,6 +5,7 @@ Contains initialization code for the application
 """
 
 
+import os
 import json
 import atexit
 import logging.config
@@ -17,8 +18,14 @@ from gql import Client
 
 from metrify.config import Config
 
-with open(Path("metrify/log/config.json"), encoding="utf-8") as log_c:
+cwd = os.path.dirname(__file__)
+
+with open(f"{cwd}/log/config.json", encoding="utf-8") as log_c:
     logger_config = json.load(log_c)
+    file_out = logger_config["handlers"]["file"]["filename"]
+    logger_config["handlers"]["file"]["filename"] = file_out.format(
+        path=Path(cwd).parent.absolute()
+    )
     logging.config.dictConfig(logger_config)
     queue_handler = logging.getHandlerByName("queueHandler")
     if queue_handler is not None:
@@ -28,8 +35,7 @@ with open(Path("metrify/log/config.json"), encoding="utf-8") as log_c:
             listener.stop               # type: ignore[attr-defined]
         )
 
-with open(Path("metrify/graphql/github.schema.graphql"), encoding="utf-8") \
-        as gql_c:
+with open(f"{cwd}/graphql/github.schema.graphql", encoding="utf-8") as gql_c:
     github_schema = gql_c.read()
 
 logger = logging.getLogger(__name__)

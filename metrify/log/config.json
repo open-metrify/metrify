@@ -30,7 +30,7 @@
       "class": "logging.handlers.RotatingFileHandler",
       "level": "DEBUG",
       "formatter": "json",
-      "filename": "logs/metrify.jsonl",
+      "filename": "{path}/logs/metrify.jsonl",
       "maxBytes": 10000000,
       "backupCount": 3
     },
