@@ -6,6 +6,7 @@ Contains initialization code for the application
 
 
 import json
+import atexit
 import logging.config
 import logging.handlers
 from pathlib import Path
@@ -19,6 +20,13 @@ from metrify.config import Config
 with open(Path("metrify/log/config.json"), encoding="utf-8") as log_c:
     logger_config = json.load(log_c)
     logging.config.dictConfig(logger_config)
+    queue_handler = logging.getHandlerByName("queueHandler")
+    if queue_handler is not None:
+        queue_handler.listener.start()  # type: ignore[attr-defined]
+        atexit.register(
+            queue_handler.
+            listener.stop               # type: ignore[attr-defined]
+        )
 
 with open(Path("metrify/graphql/github.schema.graphql"), encoding="utf-8") \
         as gql_c:

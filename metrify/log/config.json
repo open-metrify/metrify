@@ -48,15 +48,22 @@
       "level": "WARNING",
       "formatter": "simple",
       "stream": "ext://sys.stderr"
+    },
+    "queueHandler": {
+      "class": "logging.handlers.QueueHandler",
+      "handlers": [
+        "stdout",
+        "stderr",
+        "file"
+      ],
+      "respect_handler_level": true
     }
   },
   "loggers": {
     "root": {
       "level": "DEBUG",
       "handlers": [
-        "stdout",
-        "stderr",
-        "file"
+        "queueHandler"
       ]
     }
   }
