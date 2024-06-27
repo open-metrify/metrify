@@ -1,6 +1,7 @@
 """
 metrify/log/__init__.py
 
+Contains logging configuration and util function implementations.
 """
 
 import json
