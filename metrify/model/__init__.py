@@ -28,3 +28,6 @@ class Issue(TypedDict):
     """
 
     code: str
+
+
+__all__ = ["Developer", "Issue"]

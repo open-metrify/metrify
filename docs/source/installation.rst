@@ -68,6 +68,15 @@ oficial <https://docs.docker.com/desktop/install/linux-install/>`__.
 Instalação das dependências do projeto
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Antes de instalar qualquer módulo adicional no intérprete python, é importante
+isolar o ambiente da aplicação através de um ambiente virutal. Caso seja a 
+primeira vez executando o sistema, talvez seja necessário criar os arquivos do 
+ambiente local:
+
+.. code:: bash
+
+   python3.12 -m venv venv
+
 Para instalar as dependências do projeto basta inicializar o ambiente
 virtual e executar o comando de instalação:
 
@@ -100,6 +109,69 @@ Executando a aplicação localmente
 
       docker compose up -d mongo
       Creating metrify_mongo_1 ... done
+
+É necessário exportar as credenciais da aplicação em um arquivo ``.env``
+para que seja possível realizar a integração com os serviços do Github;
+para fazer isso, adicione o arquivo na raiz do projeto da seguinte
+maneira:
+
+.. code:: diff
+
+       .
+       ├── .coverage
+       ├── docker-compose.yml
+       ├── docs
+       │   ├── build
+       │   ├── make.bat
+       │   ├── Makefile
+       │   └── source
+   +   ├── .env
+       ├── .flaskenv
+       ├── .github
+       │   └── workflows
+       ├── .gitignore
+       ├── LICENSE.rst
+       ├── metrify
+       ...
+
+Registre os dados de configuração para a integração:
+
+.. code:: sh
+
+   # .env
+   APP_ID="app_id"
+   PRIVATE_KEY_PATH="./.private-key.pem"
+   INSTALLATION_ID="your_installation_id"
+
+As variáveis ``APP_ID`` e ``INSTALLATION_ID`` são referentes ao ID universal do
+Github App e ID da instalação do app na organização de destino, respectivamente.
+A variável de ambiente ``PRIVATE_KEY_PATH`` deve apontar para a localização do
+arquivo ``.pem`` da chave privada da aplicação (consultar com equipe de
+desenvolvimento para adquirir uma chave de acesso).
+
+Recomenda-se salvar a chave de acesso em um arquivo ``.private-key.pem``
+na raiz do projeto, como demonstrado no exemplo de configuração, da
+seguinte maneira:
+
+.. code:: diff
+
+       .
+       ├── .coverage
+       ├── docker-compose.yml
+       ├── docs
+       │   ├── build
+       │   ├── make.bat
+       │   ├── Makefile
+       │   └── source
+       ├── .env
+   +   ├── .private-key.pem
+       ├── .flaskenv
+       ├── .github
+       │   └── workflows
+       ├── .gitignore
+       ├── LICENSE.rst
+       ├── metrify
+       ...
 
 Após a instalação de todos os recursos, certifique-se de ativar o
 ambiente virtual para executar o servidor Flask:
@@ -160,9 +232,12 @@ disposição dos arquivos no diretório-fonte (``metrify/``).
    sendo testado.
 
 -  A estrutura do código de teste deve espelhar o código que está sendo
-   testado; a nomenclatura das funções de teste deve seguir o padrão
-   “test_<src>.py”, onde “src” refere-se ao nome da função que está
-   sendo testada. ex.:
+   testado; o arquivo de teste deve seguir o padrão de um suite de testes (em
+   forma de classe) por função testada, seguindo a nomenclatura "Test<Subject>",
+   onde "Subject" refere-se ao nome função sendo testada, em
+   `PascalCase <https://www.theserverside.com/definition/Pascal-case/>`__; cada
+   caso de teste deve ser representado por um método da classe, com um nome
+   descritivo.
 
 .. code:: python
 
@@ -170,9 +245,12 @@ disposição dos arquivos no diretório-fonte (``metrify/``).
 
    from metrify.hello.strategies import hello
 
-   def test_hello():
-       """Returns 'Hello, World!'"""
-       assert hello() == "Hello, World!"
+   class TestHello:
+       """Test suite for `hello` function"""
+
+       def test_hello(self):
+           """Returns 'Hello, World!'"""
+           assert hello() == "Hello, World!"
 
 Executando testes e checagem com tox
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

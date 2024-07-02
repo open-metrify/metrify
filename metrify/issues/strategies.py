@@ -1,3 +1,0 @@
-"""
-metrify/issues/strategies.py
-"""

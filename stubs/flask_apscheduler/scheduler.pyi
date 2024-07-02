@@ -1,5 +1,5 @@
 from datetime import datetime, tzinfo
-from typing import Any, Callable, Never, Type, TypedDict
+from typing import Any, Callable, List, Never, Type, TypedDict
 from typing_extensions import Unpack
 
 from flask import Flask
@@ -40,3 +40,10 @@ class APScheduler(object):
     ) -> F: ...
     def init_app(self, app: Flask) -> None: ...
     def start(self, paused: bool = False) -> None: ...
+
+    allowed_hosts: List[str] = ["*"]
+    auth: dict[str, str] | None = None
+    api_enabled: bool = False
+    api_prefix: str = "/scheduler"
+    endpoint_prefix: str = "scheduler."
+    app: Flask | None = None

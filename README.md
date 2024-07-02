@@ -89,6 +89,67 @@ poetry install
 > Creating metrify_mongo_1 ... done
 > ```
 
+É necessário exportar as credenciais da aplicação em um arquivo `.env` para que
+seja possível realizar a integração com os serviços do Github; para fazer isso,
+adicione o arquivo na raiz do projeto da seguinte maneira:
+
+```diff
+    .
+    ├── .coverage
+    ├── docker-compose.yml
+    ├── docs
+    │   ├── build
+    │   ├── make.bat
+    │   ├── Makefile
+    │   └── source
++   ├── .env
+    ├── .flaskenv
+    ├── .github
+    │   └── workflows
+    ├── .gitignore
+    ├── LICENSE.rst
+    ├── metrify
+    ...
+```
+
+Registre os dados de configuração para a integração:
+
+```sh
+# .env
+APP_ID="app_id"
+PRIVATE_KEY_PATH="./.private-key.pem"
+INSTALLATION_ID="your_installation_id"
+```
+
+As variáveis `APP_ID` e `INSTALLATION_ID` são referentes ao ID universal do
+Github App e ID da instalação do app na organização de destino, respectivamente.
+A variável de ambiente `PRIVATE_KEY_PATH` deve apontar para a localização do
+arquivo `.pem` da chave privada da aplicação (consultar com equipe de
+desenvolvimento para adquirir uma chave de acesso).
+
+Recomenda-se salvar a chave de acesso em um arquivo `.private-key.pem` na raiz
+do projeto, como demonstrado no exemplo de configuração, da seguinte maneira:
+
+```diff
+    .
+    ├── .coverage
+    ├── docker-compose.yml
+    ├── docs
+    │   ├── build
+    │   ├── make.bat
+    │   ├── Makefile
+    │   └── source
+    ├── .env
++   ├── .private-key.pem
+    ├── .flaskenv
+    ├── .github
+    │   └── workflows
+    ├── .gitignore
+    ├── LICENSE.rst
+    ├── metrify
+    ...
+```
+
 Após a instalação de todos os recursos, certifique-se de ativar o ambiente
 virtual para executar o servidor Flask:
 
