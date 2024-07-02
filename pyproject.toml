@@ -42,6 +42,7 @@ in-place = true
 recursive = true
 verbose = true
 ignore = "E402"
+max_line_length = 120
 aggressive = 2
 
 [build-system]
