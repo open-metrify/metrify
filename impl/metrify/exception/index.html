@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>hello – Módulo de Demonstração e Exemplificação Técnica &#8212; Documentação metrify </title>
+    <title>exception – Exceções do sistema &#8212; Documentação metrify </title>
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css?v=12dfc556" />
     <script src="../../../_static/documentation_options.js?v=8946c2f5"></script>
@@ -14,8 +14,8 @@
     <script src="../../../_static/translations.js?v=000972dd"></script>
     <link rel="index" title="Índice" href="../../../genindex.html" />
     <link rel="search" title="Buscar" href="../../../search.html" />
-    <link rel="next" title="strategies – Funções de implementação do módulo" href="strategies.html" />
-    <link rel="prev" title="metrify – Módulo raiz do projeto" href="../index.html" />
+    <link rel="next" title="API – Rotas publicamente acessíveis" href="../../../api.html" />
+    <link rel="prev" title="utils – Módulo de funções utilitárias" href="../github/utils/index.html" />
    
   <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   
@@ -33,23 +33,24 @@
 
           <div class="body" role="main">
             
-  <section id="module-metrify.hello">
-<span id="hello-modulo-de-demonstracao-e-exemplificacao-tecnica"></span><h1><code class="xref py py-mod docutils literal notranslate"><span class="pre">hello</span></code> – Módulo de Demonstração e Exemplificação Técnica<a class="headerlink" href="#module-metrify.hello" title="Link para este cabeçalho">¶</a></h1>
-<p>metrify/hello/__init__.py</p>
-<p>The <cite>hello</cite> package serves the sole purpose of demonstrating good practices and
-design patterns that should be enforced in the project’s code and structuring.</p>
-<p>This module exports a <cite>Blueprint</cite> object with a single registered route, and
-contains an “strategies.py” file, which serves as a “backend” for the exposed
-endpoint.</p>
-<p>Sub-modules:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="strategies.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strategies</span></code> – Funções de implementação do módulo</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="strategies.html#metrify.hello.strategies.hello"><code class="docutils literal notranslate"><span class="pre">hello()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</div>
+  <section id="module-metrify.exception">
+<span id="exception-excecoes-do-sistema"></span><h1><code class="xref py py-mod docutils literal notranslate"><span class="pre">exception</span></code> – Exceções do sistema<a class="headerlink" href="#module-metrify.exception" title="Link para este cabeçalho">¶</a></h1>
+<p>metrify/exception/__init__.py</p>
+<p>This module exports application-related custom exceptions.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="metrify.exception.ContextError">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">metrify.exception.</span></span><span class="sig-name descname"><span class="pre">ContextError</span></span><a class="headerlink" href="#metrify.exception.ContextError" title="Link para esta definição">¶</a></dt>
+<dd><p>Base: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Exception relating to the Flask app context.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="metrify.exception.InvalidArgumentError">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">metrify.exception.</span></span><span class="sig-name descname"><span class="pre">InvalidArgumentError</span></span><a class="headerlink" href="#metrify.exception.InvalidArgumentError" title="Link para esta definição">¶</a></dt>
+<dd><p>Base: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Invalid argument</p>
+</dd></dl>
+
 </section>
 
 
@@ -73,13 +74,14 @@ endpoint.</p>
 <li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Instalação</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">impl - Documentação interna de implementação</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">metrify</span></code> – Módulo raiz do projeto</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">hello</span></code> – Módulo de Demonstração e Exemplificação Técnica</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="strategies.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strategies</span></code> – Funções de implementação do módulo</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="../hello/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">hello</span></code> – Módulo de Demonstração e Exemplificação Técnica</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">model</span></code> – Modelos de entidade da aplicação</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../github/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">github</span></code> – Módulo de integração com os recursos do Github</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../exception/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">exception</span></code> – Exceções do sistema</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">exception</span></code> – Exceções do sistema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#metrify.exception.ContextError"><code class="docutils literal notranslate"><span class="pre">ContextError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metrify.exception.InvalidArgumentError"><code class="docutils literal notranslate"><span class="pre">InvalidArgumentError</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../index.html#metrify.config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../index.html#metrify.apscheduler"><code class="docutils literal notranslate"><span class="pre">apscheduler</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../index.html#metrify.create_app"><code class="docutils literal notranslate"><span class="pre">create_app()</span></code></a></li>
@@ -98,8 +100,8 @@ endpoint.</p>
   <li><a href="../../../index.html">Documentation overview</a><ul>
   <li><a href="../../index.html">impl - Documentação interna de implementação</a><ul>
   <li><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">metrify</span></code> – Módulo raiz do projeto</a><ul>
-      <li>Previous: <a href="../index.html" title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">metrify</span></code> – Módulo raiz do projeto</a></li>
-      <li>Next: <a href="strategies.html" title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strategies</span></code> – Funções de implementação do módulo</a></li>
+      <li>Previous: <a href="../github/utils/index.html" title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">utils</span></code> – Módulo de funções utilitárias</a></li>
+      <li>Next: <a href="../../../api.html" title="próximo capítulo">API – Rotas publicamente acessíveis</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
@@ -135,7 +137,7 @@ endpoint.</p>
       &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
       
       |
-      <a href="../../../_sources/impl/metrify/hello/index.rst.txt"
+      <a href="../../../_sources/impl/metrify/exception/index.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
