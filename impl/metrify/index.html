@@ -14,7 +14,7 @@
     <script src="../../_static/translations.js?v=000972dd"></script>
     <link rel="index" title="Índice" href="../../genindex.html" />
     <link rel="search" title="Buscar" href="../../search.html" />
-    <link rel="next" title="hello – Módulo de Demonstração e Exemplificação Técnica" href="hello/index.html" />
+    <link rel="next" title="exception – Exceções do sistema" href="exception/index.html" />
     <link rel="prev" title="impl - Documentação interna de implementação" href="../index.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -38,13 +38,13 @@
 <p>Sub-modules:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="hello/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">hello</span></code> – Módulo de Demonstração e Exemplificação Técnica</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="hello/strategies.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strategies</span></code> – Funções de implementação do módulo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exception/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">exception</span></code> – Exceções do sistema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exception/index.html#metrify.exception.ContextError"><code class="docutils literal notranslate"><span class="pre">ContextError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="exception/index.html#metrify.exception.InvalidArgumentError"><code class="docutils literal notranslate"><span class="pre">InvalidArgumentError</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">model</span></code> – Modelos de entidade da aplicação</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="model/index.html#metrify.model.Developer"><code class="docutils literal notranslate"><span class="pre">Developer</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="model/index.html#metrify.model.Issue"><code class="docutils literal notranslate"><span class="pre">Issue</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="hello/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">hello</span></code> – Módulo de Demonstração e Exemplificação Técnica</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hello/strategies.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">strategies</span></code> – Funções de implementação do módulo</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="github/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">github</span></code> – Módulo de integração com os recursos do Github</a><ul>
@@ -52,9 +52,14 @@
 <li class="toctree-l2"><a class="reference internal" href="github/utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">utils</span></code> – Módulo de funções utilitárias</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="exception/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">exception</span></code> – Exceções do sistema</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="exception/index.html#metrify.exception.ContextError"><code class="docutils literal notranslate"><span class="pre">ContextError</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="exception/index.html#metrify.exception.InvalidArgumentError"><code class="docutils literal notranslate"><span class="pre">InvalidArgumentError</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="log/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">log</span></code> – Configuração do logger da aplicação</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="log/index.html#metrify.log.JSONFormatter"><code class="docutils literal notranslate"><span class="pre">JSONFormatter</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="log/index.html#metrify.log.NonErrorFilter"><code class="docutils literal notranslate"><span class="pre">NonErrorFilter</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">model</span></code> – Modelos de entidade da aplicação</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="model/index.html#metrify.model.Developer"><code class="docutils literal notranslate"><span class="pre">Developer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="model/index.html#metrify.model.Issue"><code class="docutils literal notranslate"><span class="pre">Issue</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -118,8 +123,14 @@ used to set events to be periodically executed.</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="metrify.graphql">
 <span class="sig-prename descclassname"><span class="pre">metrify.</span></span><span class="sig-name descname"><span class="pre">graphql</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;gql.client.Client</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#metrify.graphql" title="Link para esta definição">¶</a></dt>
-<dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>: An instance of th GraphQL client class used to interact
+<dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Client</span></code>: An instance of the GraphQL client class used to interact
 with the Github API.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="metrify.logger">
+<span class="sig-prename descclassname"><span class="pre">metrify.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Logger</span> <span class="pre">metrify</span> <span class="pre">(DEBUG)&gt;</span></em><a class="headerlink" href="#metrify.logger" title="Link para esta definição">¶</a></dt>
+<dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Logger</span></code>: The Logger instance for the application.</p>
 </dd></dl>
 
 <dl class="py data">
@@ -152,14 +163,16 @@ with the database.</p>
 <li class="toctree-l1"><a class="reference internal" href="../../installation.html">Instalação</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">impl - Documentação interna de implementação</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">metrify</span></code> – Módulo raiz do projeto</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="hello/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">hello</span></code> – Módulo de Demonstração e Exemplificação Técnica</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">model</span></code> – Modelos de entidade da aplicação</a></li>
-<li class="toctree-l3"><a class="reference internal" href="github/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">github</span></code> – Módulo de integração com os recursos do Github</a></li>
 <li class="toctree-l3"><a class="reference internal" href="exception/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">exception</span></code> – Exceções do sistema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hello/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">hello</span></code> – Módulo de Demonstração e Exemplificação Técnica</a></li>
+<li class="toctree-l3"><a class="reference internal" href="github/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">github</span></code> – Módulo de integração com os recursos do Github</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">log</span></code> – Configuração do logger da aplicação</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">model</span></code> – Modelos de entidade da aplicação</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#metrify.config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#metrify.apscheduler"><code class="docutils literal notranslate"><span class="pre">apscheduler</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#metrify.create_app"><code class="docutils literal notranslate"><span class="pre">create_app()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#metrify.graphql"><code class="docutils literal notranslate"><span class="pre">graphql</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metrify.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#metrify.mongo"><code class="docutils literal notranslate"><span class="pre">mongo</span></code></a></li>
 </ul>
 </li>
@@ -174,7 +187,7 @@ with the database.</p>
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="../index.html">impl - Documentação interna de implementação</a><ul>
       <li>Previous: <a href="../index.html" title="capítulo anterior">impl - Documentação interna de implementação</a></li>
-      <li>Next: <a href="hello/index.html" title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">hello</span></code> – Módulo de Demonstração e Exemplificação Técnica</a></li>
+      <li>Next: <a href="exception/index.html" title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">exception</span></code> – Exceções do sistema</a></li>
   </ul></li>
   </ul></li>
 </ul>
