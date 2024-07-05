@@ -183,6 +183,40 @@ ambiente virtual para executar o servidor Flask:
 
 A aplicação estará disponível em no endereço ``127.0.0.1:5000``.
 
+Identificando diagnósticos via logs
+-----------------------------------
+
+Por padrão, os logs do sistema serão amazenados em ``logs/``, em formato 
+``.jsonl``. Recomenda-se a ferramenta 
+`jq <https://jqlang.github.io/jq/>`__ para navegação dos logs durante a 
+depuração do código em desenvolvimento.
+
+
+.. code:: bash
+
+   cat logs/metrify.jsonl | jq '. | select ( .level == "DEBUG" )'
+   {
+     "level": "DEBUG",
+     "message": "2 found:\n {'/etc/timezone': 'America/Sao_Paulo', '/etc/localtime is a symlink to': 'America/Sao_Paulo'}",
+     "timestamp": "2024-07-05T03:00:20.359235+00:00",
+     "logger": "tzlocal",
+     "module": "unix",
+     "function": "_get_localzone_name",
+     "line": 139,
+     "thread_name": "MainThread"
+   }
+   {
+     "level": "DEBUG",
+     "message": "Looking for jobs to run",
+     "timestamp": "2024-07-05T03:00:20.504614+00:00",
+     "logger": "apscheduler.scheduler",
+     "module": "base",
+     "function": "_process_jobs",
+     "line": 954,
+     "thread_name": "APScheduler"
+   }
+   ...
+
 pre-commit
 ----------
 
