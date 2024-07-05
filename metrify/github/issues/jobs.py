@@ -9,4 +9,3 @@ from metrify import apscheduler
                   seconds=10, misfire_grace_time=900)
 def get_issue() -> None:
     """..."""
-    print("`get_issue` Job executed")
