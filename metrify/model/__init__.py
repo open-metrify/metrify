@@ -8,26 +8,42 @@ Exports entity model classes for the application
 from typing import TypedDict
 
 
-class Developer(TypedDict):
+class TeamMember(TypedDict):
     """
-    Developer class
+    TeamMember class
 
-    :ivar name: Name attribute for the developer object
+    :ivar name: Name attribute for the team member object
     :vartype name: str
     """
 
     name: str
 
 
+class HistoryStatus(TypedDict):
+    """
+    HistoryStatus class
+
+    :ivar status: Status attribute for the history status object
+    :vartype status: str
+    """
+
+    status: str
+    timestamp: int
+
+
 class Issue(TypedDict):
     """
     Issue class
 
-    :ivar code: Code attribute for the issue object
-    :vartype code: str
+    :ivar number: Number attribute for the issue object
+    :vartype number: int
     """
 
-    code: str
+    number: int
+    points: int
+    developer: TeamMember
+    tester: TeamMember
+    history: list[HistoryStatus]
 
 
-__all__ = ["Developer", "Issue"]
+__all__ = ["TeamMember", "HistoryStatus", "Issue"]
