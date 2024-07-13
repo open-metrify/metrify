@@ -7,6 +7,34 @@ Exports entity model classes for the application
 
 from typing import TypedDict
 
+# Raw data types for the application
+
+
+class RawIssue(TypedDict):
+    """
+    RawIssue class
+
+    :ivar number: Number attribute for the raw issue object
+    :vartype number: int
+    """
+
+    number: int
+    points: int
+    developer: str
+    tester: str
+    status: str
+
+
+class RawProject(TypedDict):
+    """
+    BoardSnapshot class
+
+    :ivar snapshot: Snapshot attribute for the board snapshot object
+    :vartype snapshot: dict
+    """
+
+    issues: list[RawIssue]
+
 
 class TeamMember(TypedDict):
     """
@@ -46,4 +74,4 @@ class Issue(TypedDict):
     history: list[HistoryStatus]
 
 
-__all__ = ["TeamMember", "HistoryStatus", "Issue"]
+__all__ = ["RawIssue", "RawProject", "TeamMember", "HistoryStatus", "Issue"]
