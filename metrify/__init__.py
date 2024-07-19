@@ -19,7 +19,7 @@ with open(
 graphql = Client(
     schema=github_schema,
 )
-""":class:`Client`: An instance of th GraphQL client class used to interact with
+""":class:`Client`: An instance of the GraphQL client class used to interact with
 the Github API."""
 
 mongo: PyMongo = PyMongo()

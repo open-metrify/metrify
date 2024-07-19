@@ -3,10 +3,12 @@ metrify/issues/jobs.py
 """
 
 from metrify import apscheduler
+from metrify.github.issues.strategies import get_issues
 
 
-@apscheduler.task("interval", id="github.get_issue",
-                  seconds=10, misfire_grace_time=900)
-def get_issue() -> None:
+@apscheduler.task("interval", id="github.collect_data",
+                  seconds=5, misfire_grace_time=900)
+def collect_data() -> None:
     """..."""
-    print("`get_issue` Job executed")
+
+    get_issues()

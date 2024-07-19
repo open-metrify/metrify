@@ -24,9 +24,8 @@ def get_access_token(jwt: str, installation_id: str) -> str:
     :rtype: str
     """
 
-    url = (
-        f"https://api.github.com/app/installations/{installation_id}/access_tokens",
-    )
+    url = f"https://api.github.com/app/installations/{
+        installation_id}/access_tokens"
     headers = {
         "Accept": "application/vnd.github+json",
         "Authorization": f"Bearer {jwt}",
