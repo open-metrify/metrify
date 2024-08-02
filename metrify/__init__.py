@@ -44,8 +44,7 @@ logger = logging.getLogger(__name__)
 graphql = Client(
     schema=github_schema,
 )
-""":class:`Client`: An instance of the GraphQL client class used to interact
-with the Github API."""
+""":class:`Client`: An instance of the GraphQL client class used to interact with the Github API."""
 
 mongo: PyMongo = PyMongo()
 """:class:`PyMongo`: An instance of the database client class used to interact
@@ -54,6 +53,12 @@ with the database."""
 apscheduler: APScheduler = APScheduler()
 """:class:`APScheduler`: An instance of the Advanced Python Scheduler class
 used to set events to be periodically executed."""
+
+projects: dict[int, str] = {}
+""":class:`dict`: A dictionary containing the project number as the key and the project graphql node ID as the value."""
+
+tracked_projects: list[int] = [0]  # TODO: Get this from the user
+""":class:`list`: A list with all the tracked projects' numbers"""
 
 
 def create_app(config_class: type[Config] = Config) -> Flask:
@@ -87,6 +92,11 @@ def create_app(config_class: type[Config] = Config) -> Flask:
     from metrify.github.auth import bp as github_auth_bp
 
     app.register_blueprint(github_auth_bp)
+
+    # pylint: disable=import-outside-toplevel, wrong-import-position
+    from metrify.github.projects import bp as github_projects_bp
+
+    app.register_blueprint(github_projects_bp)
 
     apscheduler.start()
 

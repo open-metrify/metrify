@@ -1,0 +1,2 @@
+schema: "metrify/graphql/github.schema.graphql"
+documents: "metrify/**/*.{gql,py}"
