@@ -29,8 +29,7 @@ def authenticate() -> None:
         instance
     """
     if apscheduler.app is None:
-        raise ContextError(
-            "APScheduler instance is not linked to Flask application")
+        raise ContextError("APScheduler instance is not linked to Flask application")
 
     with apscheduler.app.app_context():
         config = current_app.config
