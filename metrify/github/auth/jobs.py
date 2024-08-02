@@ -9,7 +9,7 @@ from datetime import datetime
 from flask import current_app
 from gql.transport.requests import RequestsHTTPTransport
 from metrify import apscheduler, graphql
-from metrify.exception import ContextException
+from metrify.exception import ContextError
 from metrify.github.auth.strategies import get_access_token
 from metrify.github.utils import generate_github_jwt
 
@@ -21,15 +21,16 @@ from metrify.github.utils import generate_github_jwt
                   next_run_time=datetime.now())
 def authenticate() -> None:
     """
-    Periodically resets the Github API access token to keep the app authenticated.
+    Periodically resets the Github API access token to keep the app
+    authenticated.
     Scheduled to run every 9 minutes.
 
-    :raises ContextException: if app context is not accessible from scheduler instance
+    :raises ContextError: if app context is not accessible from scheduler
+        instance
     """
     if apscheduler.app is None:
-        raise ContextException(
-            "APScheduler instance is not linked to Flask application"
-        )
+        raise ContextError(
+            "APScheduler instance is not linked to Flask application")
 
     with apscheduler.app.app_context():
         config = current_app.config

@@ -8,6 +8,8 @@ from time import time
 
 from jwt import JWT, jwk_from_pem
 
+from metrify.exception import InvalidArgumentError
+
 
 def generate_github_jwt(
     client_id: str, pem_path: str, expiration_time: int = 600
@@ -23,13 +25,24 @@ def generate_github_jwt(
         Github App.
     :type pem_path: str
 
-    :param expiration_time: Expiration time for the JWT, in seconds; 10 minutes
-        maximum.
+    :param expiration_time: Expiration time for the JWT, in seconds; 600 second
+        maximum limit.
     :type expiration_time: int
 
     :return: JWT to authenticate the Github App
     :rtype: str
+
+    :raises FileNotFoundError: if path specified for PEM file is invalid
+    :raises UnsupportedKeyTypeError: if private key is invalid
+    :raises InvalidArgumentError: if `expiration_time` argument is grater than
+        600 seconds
     """
+
+    if expiration_time > 600:
+        raise InvalidArgumentError(
+            """
+Maximum expiration time for Github App tokens is 600 seconds (10 minutes)"""
+        )
 
     with open(pem_path, "rb") as pem_file:
         signing_key = jwk_from_pem(pem_file.read())

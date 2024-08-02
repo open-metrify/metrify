@@ -68,6 +68,15 @@ oficial <https://docs.docker.com/desktop/install/linux-install/>`__.
 Instalação das dependências do projeto
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Antes de instalar qualquer módulo adicional no intérprete python, é importante
+isolar o ambiente da aplicação através de um ambiente virutal. Caso seja a 
+primeira vez executando o sistema, talvez seja necessário criar os arquivos do 
+ambiente local:
+
+.. code:: bash
+
+   python3.12 -m venv venv
+
 Para instalar as dependências do projeto basta inicializar o ambiente
 virtual e executar o comando de instalação:
 
@@ -174,6 +183,40 @@ ambiente virtual para executar o servidor Flask:
 
 A aplicação estará disponível em no endereço ``127.0.0.1:5000``.
 
+Identificando diagnósticos via logs
+-----------------------------------
+
+Por padrão, os logs do sistema serão amazenados em ``logs/``, em formato 
+``.jsonl``. Recomenda-se a ferramenta 
+`jq <https://jqlang.github.io/jq/>`__ para navegação dos logs durante a 
+depuração do código em desenvolvimento.
+
+
+.. code:: bash
+
+   cat logs/metrify.jsonl | jq '. | select ( .level == "DEBUG" )'
+   {
+     "level": "DEBUG",
+     "message": "2 found:\n {'/etc/timezone': 'America/Sao_Paulo', '/etc/localtime is a symlink to': 'America/Sao_Paulo'}",
+     "timestamp": "2024-07-05T03:00:20.359235+00:00",
+     "logger": "tzlocal",
+     "module": "unix",
+     "function": "_get_localzone_name",
+     "line": 139,
+     "thread_name": "MainThread"
+   }
+   {
+     "level": "DEBUG",
+     "message": "Looking for jobs to run",
+     "timestamp": "2024-07-05T03:00:20.504614+00:00",
+     "logger": "apscheduler.scheduler",
+     "module": "base",
+     "function": "_process_jobs",
+     "line": 954,
+     "thread_name": "APScheduler"
+   }
+   ...
+
 pre-commit
 ----------
 
@@ -223,9 +266,12 @@ disposição dos arquivos no diretório-fonte (``metrify/``).
    sendo testado.
 
 -  A estrutura do código de teste deve espelhar o código que está sendo
-   testado; a nomenclatura das funções de teste deve seguir o padrão
-   “test_<src>.py”, onde “src” refere-se ao nome da função que está
-   sendo testada. ex.:
+   testado; o arquivo de teste deve seguir o padrão de um suite de testes (em
+   forma de classe) por função testada, seguindo a nomenclatura "Test<Subject>",
+   onde "Subject" refere-se ao nome função sendo testada, em
+   `PascalCase <https://www.theserverside.com/definition/Pascal-case/>`__; cada
+   caso de teste deve ser representado por um método da classe, com um nome
+   descritivo.
 
 .. code:: python
 
@@ -233,9 +279,12 @@ disposição dos arquivos no diretório-fonte (``metrify/``).
 
    from metrify.hello.strategies import hello
 
-   def test_hello():
-       """Returns 'Hello, World!'"""
-       assert hello() == "Hello, World!"
+   class TestHello:
+       """Test suite for `hello` function"""
+
+       def test_hello(self):
+           """Returns 'Hello, World!'"""
+           assert hello() == "Hello, World!"
 
 Executando testes e checagem com tox
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

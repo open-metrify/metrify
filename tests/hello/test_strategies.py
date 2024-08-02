@@ -5,6 +5,9 @@ Test suite for metrify.hello.strategies
 from metrify.hello.strategies import hello
 
 
-def test_hello() -> None:
-    """Returns 'Hello, World!'"""
-    assert hello() == "Hello, World!"
+class TestHello:
+    """Test suite for `hello` function"""
+
+    def test_hello(self) -> None:
+        """Should return 'Hello, World!'"""
+        assert hello() == "Hello, World!"

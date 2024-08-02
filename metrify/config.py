@@ -28,11 +28,12 @@ class Config:
     :ivar GITHUB_CLIENT_ID: Client ID for the Github App integration
     :vartype GITHUB_CLIENT_ID: str
 
-    :ivar GITHUB_INSTALLATION_ID: App installation ID for the Github App integration
+    :ivar GITHUB_INSTALLATION_ID: App installation ID for the Github App
+        integration
     :vartype GITHUB_INSTALLATION_ID: str
 
-    :ivar GITHUB_API_KEY_PEM: Path to the `.pem` file containing the private key
-        to the Github App
+    :ivar GITHUB_API_KEY_PEM: Path to the `.pem` file containing the private
+        key to the Github App
     :vartype GITHUB_API_KEY_PEM: str
     """
 
