@@ -7,7 +7,7 @@ from metrify.github.issues.strategies import get_issues
 
 
 @apscheduler.task("interval", id="github.collect_data",
-                  seconds=5, misfire_grace_time=900)
+                  seconds=600, misfire_grace_time=900)
 def collect_data() -> None:
     """..."""
 
