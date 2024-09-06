@@ -2,7 +2,6 @@
 Test suite for metrify.github.auth.strategies
 """
 
-from sys import path
 from typing import Any, Generator, Tuple
 from unittest.mock import MagicMock, patch
 from pytest import raises
@@ -10,10 +9,16 @@ import pytest
 
 from requests import RequestException
 
-from metrify.github.auth.model import AuthResponse
 from metrify.github.auth.strategies import get_access_token
 
 type Fixture = Tuple[Any, Any, Any, Any, Any]
+
+
+class MockAuthResponse:
+    """Test class for mocking metrify.github.auth.model.AuthResponse"""
+
+    def __init__(self, token: str):
+        self.token = token
 
 
 class TestGetAccessToken:
@@ -45,16 +50,16 @@ class TestGetAccessToken:
         Should correctly extract and return the 'token' attribute value from
         the response body
         """
-
         jwt, installation_id, url, headers, timeout = data
 
         token_value = "test_token"
-        response_content = "{ token: { " + token_value + " } }"
+        response_content = "{ 'token': 'test_token' }"
+        parsed_response = MockAuthResponse(token_value)
 
         response = MagicMock()
         response.content = response_content
         mock_post.return_value = response
-        mock_parse.return_value = token_value
+        mock_parse.return_value = parsed_response
 
         result = get_access_token(jwt, installation_id)
 
