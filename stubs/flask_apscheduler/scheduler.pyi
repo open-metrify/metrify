@@ -4,9 +4,9 @@ from typing_extensions import Unpack
 
 from flask import Flask
 
-type Args = list[Any] | tuple[Any] | None  # type: ignore[misc, valid-type] # noqa: F821
-type Kwargs = dict[Any, Any] | None  # type: ignore[misc, valid-type] # noqa: F821
-type F = Callable[[Any], Any] | Never  # type: ignore[misc, valid-type] # noqa: F821
+type Args = list[Any] | tuple[Any] | None  # type: ignore[valid-type] # noqa: F821
+type Kwargs = dict[Any, Any] | None  # type: ignore[valid-type] # noqa: F821
+type F = Callable[[Any], Any] | Never  # type: ignore[valid-type] # noqa: F821
 
 class _Undefined(object): ...
 class BaseTrigger(object): ...

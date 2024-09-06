@@ -1,10 +1,10 @@
 from typing import Any
 from flask import Flask, Response
 
-type Kwargs = Any  # type: ignore[misc, valid-type] # noqa: F821
-type Args = Any  # type: ignore[misc, valid-type] # noqa: F821
-type File = Any  # type: ignore[misc, valid-type] # noqa: F821
-type Id = Any  # type: ignore[misc, valid-type] # noqa: F821
+type Kwargs = Any  # type: ignore[valid-type] # noqa: F821
+type Args = Any  # type: ignore[valid-type] # noqa: F821
+type File = Any  # type: ignore[valid-type] # noqa: F821
+type Id = Any  # type: ignore[valid-type] # noqa: F821
 
 class PyMongo(object):
     def __init__(
