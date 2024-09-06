@@ -10,9 +10,8 @@ from metrify import apscheduler, projects
 from metrify.github.projects.strategies import get_projects
 
 
-@apscheduler.task("interval", id="github.collect_projects", weeks=1,
-                  misfire_grace_time=900, next_run_time=datetime.now() +
-                  timedelta(seconds=10))  # TODO: Fix this
+@apscheduler.task("interval", id="github.collect_projects", weeks=1, misfire_grace_time=900,
+                  next_run_time=datetime.now() + timedelta(seconds=10))  # TODO: Fix this
 def collect_projects() -> None:
     """..."""
 

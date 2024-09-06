@@ -17,6 +17,7 @@ from flask_apscheduler import APScheduler
 from gql import Client
 
 from metrify.config import Config
+from metrify.graphql import load_queries
 
 cwd = os.path.dirname(__file__)
 
@@ -37,6 +38,11 @@ with open(f"{cwd}/log/config.json", encoding="utf-8") as log_c:
 
 with open(f"{cwd}/graphql/github.schema.graphql", encoding="utf-8") as gql_c:
     github_schema = gql_c.read()
+
+queries = load_queries()
+"""
+:class:`QueryDict`: Dictionary compiled from all the `gql` query files, kept in memory for global application access
+"""
 
 logger = logging.getLogger(__name__)
 """:class:`Logger`: The Logger instance for the application."""
@@ -103,4 +109,4 @@ def create_app(config_class: type[Config] = Config) -> Flask:
     return app
 
 
-__all__ = ["graphql", "mongo", "apscheduler", "create_app", "logger"]
+__all__ = ["graphql", "mongo", "apscheduler", "create_app", "logger", "queries"]

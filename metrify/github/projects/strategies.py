@@ -3,27 +3,12 @@ Data collection strategies for GitHub Projects.
 """
 
 from gql import gql
-from metrify import graphql
+from metrify import graphql, queries
 
 
 def get_projects() -> dict[str, dict]:
     """Get all projects from every repository"""
 
-    query = gql("""
-        query {
-            viewer {
-                repositories(first: 100) {
-                    nodes {
-                        projectsV2(first: 100) {
-                            nodes {
-                                number
-                                id
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    """)
+    query = gql(queries["ProjectsQuery"])
 
-    return graphql.execute(query)  # pylint: disable=attr-defined
+    return graphql.execute(query)
