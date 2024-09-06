@@ -1,5 +1,5 @@
 """
-metrify/github/auth/model/__init__.py
+metrify/github/model/__init__.py
 
 Exports Pydantic model classes for the github module
 """

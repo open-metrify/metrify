@@ -7,7 +7,7 @@ registered by the package's "jobs.py".
 
 import requests
 
-from metrify.github.auth.model import AuthResponse
+from metrify.github.model import AuthResponse
 
 
 def get_access_token(jwt: str, installation_id: str) -> str:

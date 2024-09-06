@@ -17,6 +17,7 @@ from flask_apscheduler import APScheduler
 from gql import Client
 
 from metrify.config import Config
+from metrify.graphql import load_queries
 
 cwd = os.path.dirname(__file__)
 
@@ -38,14 +39,18 @@ with open(f"{cwd}/log/config.json", encoding="utf-8") as log_c:
 with open(f"{cwd}/graphql/github.schema.graphql", encoding="utf-8") as gql_c:
     github_schema = gql_c.read()
 
+queries = load_queries()
+"""
+:class:`QueryDict`: Dictionary compiled from all the `gql` query files, kept in memory for global application access
+"""
+
 logger = logging.getLogger(__name__)
 """:class:`Logger`: The Logger instance for the application."""
 
 graphql = Client(
     schema=github_schema,
 )
-""":class:`Client`: An instance of the GraphQL client class used to interact
-with the Github API."""
+""":class:`Client`: An instance of the GraphQL client class used to interact with the Github API."""
 
 mongo: PyMongo = PyMongo()
 """:class:`PyMongo`: An instance of the database client class used to interact
@@ -54,6 +59,12 @@ with the database."""
 apscheduler: APScheduler = APScheduler()
 """:class:`APScheduler`: An instance of the Advanced Python Scheduler class
 used to set events to be periodically executed."""
+
+projects: dict[int, str] = {}
+""":class:`dict`: A dictionary containing the project number as the key and the project graphql node ID as the value."""
+
+tracked_projects: list[int] = [0]  # TODO: Get this from the user
+""":class:`list`: A list with all the tracked projects' numbers"""
 
 
 def create_app(config_class: type[Config] = Config) -> Flask:
@@ -88,9 +99,14 @@ def create_app(config_class: type[Config] = Config) -> Flask:
 
     app.register_blueprint(github_auth_bp)
 
+    # pylint: disable=import-outside-toplevel, wrong-import-position
+    from metrify.github.projects import bp as github_projects_bp
+
+    app.register_blueprint(github_projects_bp)
+
     apscheduler.start()
 
     return app
 
 
-__all__ = ["graphql", "mongo", "apscheduler", "create_app", "logger"]
+__all__ = ["graphql", "mongo", "apscheduler", "create_app", "logger", "queries"]

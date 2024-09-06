@@ -1,0 +1,14 @@
+query {
+  viewer {
+    repositories(first: 100) {
+      nodes {
+        projectsV2(first: 100) {
+          nodes {
+            number
+            id
+          }
+        }
+      }
+    }
+  }
+}
