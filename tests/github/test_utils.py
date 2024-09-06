@@ -2,7 +2,7 @@
 Test suite for metrify.github.utils
 """
 
-from typing import Generator
+from typing import Any, Generator, Tuple
 from unittest.mock import MagicMock, patch, mock_open
 from jwt import JWT
 from jwt.exceptions import UnsupportedKeyTypeError
@@ -13,12 +13,14 @@ import pytest
 from metrify.exception import InvalidArgumentError
 from metrify.github.utils import generate_github_jwt
 
+type Fixture = Tuple[Any, Any, Any]
+
 
 class TestGenerateGithubJwt:
     """Test suite for `generate_github_jwt` function"""
 
     @pytest.fixture(scope="class")
-    def data(self) -> Generator[tuple, None, None]:
+    def data(self) -> Generator[Fixture, None, None]:
         """Setup and Teardown"""
 
         client_id = "test_client_id"
@@ -29,7 +31,7 @@ class TestGenerateGithubJwt:
     @patch("metrify.github.utils.jwk_from_pem")
     @patch("metrify.github.utils.time")
     def test_generate_success(
-        self, mock_time: MagicMock, mock_jwk: MagicMock, data: tuple
+        self, mock_time: MagicMock, mock_jwk: MagicMock, data: Fixture
     ):
         """
         Should correctly make calls to generate, encode, and return the JWT
@@ -49,15 +51,11 @@ class TestGenerateGithubJwt:
         mock_time.return_value = 1000
         mock_jwk.return_value = signing_key
 
-        with patch("builtins.open", mock_open(read_data=pem_contents)) \
-                as mock_open_file:
-            with patch.object(JWT, "encode", return_value=encode_result) \
-                    as mock_encode:
-                result = generate_github_jwt(
-                    client_id,
-                    pem_path,
-                    expiration_time
-                )
+        with patch(
+            "builtins.open", mock_open(read_data=pem_contents)
+        ) as mock_open_file:
+            with patch.object(JWT, "encode", return_value=encode_result) as mock_encode:
+                result = generate_github_jwt(client_id, pem_path, expiration_time)
 
                 mock_open_file.assert_called_once_with(pem_path, "rb")
                 mock_jwk.assert_called_once_with(pem_contents)
@@ -80,7 +78,7 @@ class TestGenerateGithubJwt:
         mock_open_file: MagicMock,
         mock_time: MagicMock,
         mock_jwk: MagicMock,
-        data: tuple,
+        data: Fixture,
     ):
         """
         Should halt execution and return 'None' in case an invalid PEM path is
@@ -93,11 +91,7 @@ class TestGenerateGithubJwt:
 
         with raises(FileNotFoundError):
             with patch.object(JWT, "encode") as mock_encode:
-                result = generate_github_jwt(
-                    client_id,
-                    pem_path,
-                    expiration_time
-                )
+                result = generate_github_jwt(client_id, pem_path, expiration_time)
                 mock_open_file.assert_called_once_with(pem_path, "rb")
                 mock_jwk.assert_not_called()
                 mock_time.assert_not_called()
@@ -107,10 +101,8 @@ class TestGenerateGithubJwt:
     @patch("metrify.github.utils.jwk_from_pem")
     @patch("metrify.github.utils.time")
     def test_invalid_key(
-            self,
-            mock_time: MagicMock,
-            mock_jwk: MagicMock,
-            data: tuple):
+        self, mock_time: MagicMock, mock_jwk: MagicMock, data: Fixture
+    ):
         """
         Should halt execution and return 'None' in case an invalid PEM file is
         passed to the function
@@ -127,11 +119,7 @@ class TestGenerateGithubJwt:
         ) as mock_open_file:
             with raises(UnsupportedKeyTypeError):
                 with patch.object(JWT, "encode") as mock_encode:
-                    result = generate_github_jwt(
-                        client_id,
-                        pem_path,
-                        expiration_time
-                    )
+                    result = generate_github_jwt(client_id, pem_path, expiration_time)
                     mock_open_file.assert_called_once_with(pem_path, "rb")
                     mock_jwk.assert_called_once_with(pem_contents)
                     mock_encode.assert_not_called()
@@ -146,7 +134,7 @@ class TestGenerateGithubJwt:
         mock_open_file: MagicMock,
         mock_time: MagicMock,
         mock_jwk: MagicMock,
-        data: tuple,
+        data: Fixture,
     ):
         """
         Should halt execution and return 'None' in case an invalid execution
@@ -159,8 +147,7 @@ class TestGenerateGithubJwt:
 
         with raises(InvalidArgumentError):
             with patch.object(JWT, "encode") as mock_encode:
-                result = generate_github_jwt(
-                    client_id, pem_path, expiration_time)
+                result = generate_github_jwt(client_id, pem_path, expiration_time)
                 mock_open_file.assert_not_called()
                 mock_jwk.assert_not_called()
                 mock_time.assert_not_called()

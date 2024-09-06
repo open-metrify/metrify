@@ -5,8 +5,9 @@ The "strategies.py" module implements the "backend" for the scheduled jobs
 registered by the package's "jobs.py".
 """
 
-from flask import json
 import requests
+
+from metrify.github.auth.model import AuthResponse
 
 
 def get_access_token(jwt: str, installation_id: str) -> str:
@@ -36,10 +37,4 @@ def get_access_token(jwt: str, installation_id: str) -> str:
         timeout=10,
     )
 
-    # pylint: disable=fixme
-    # TODO: handle errors
-
-    # pylint: disable=fixme
-    # TODO: remover cast desnecessário aqui quando incluir pydantic e modelos
-    # de dados da API
-    return str(json.loads(response.content)["token"])
+    return AuthResponse.model_validate_json(response.content).token
