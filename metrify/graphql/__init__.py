@@ -5,10 +5,12 @@ Exports utility functions for working with GraphQL
 """
 import os
 
-type QueryDict = dict[str, str]
+type QueryDict = dict[str, str]  # type: ignore[valid-type] # noqa: F821
 """
 In-memory representation of the GraphQL queries compiled from `gql` files.
-The key-value pairs are assembled using the original filenames as keys (file extensions are stripped), and the contents as values.
+
+The key-value pairs are assembled using the original filenames as keys (file extensions are stripped), and the contents
+as values.
 """
 
 
@@ -23,7 +25,7 @@ def load_queries() -> QueryDict:
     query_dir = f'{os.getcwd()}/metrify/graphql/queries'
 
     return {
-        os.path.splitext(filename)[0]: open(os.path.join(query_dir, filename), 'r').read()
+        os.path.splitext(filename)[0]: open(os.path.join(query_dir, filename), 'r', encoding='utf-8').read()
         for filename in os.listdir(query_dir)
         if os.path.isfile(os.path.join(query_dir, filename))
     }

@@ -2,9 +2,6 @@
 Data collection strategies for GitHub issues.
 """
 
-from gql import gql
-from metrify import graphql
-
 
 def get_issues() -> None:
     """Get all issues from a project."""

@@ -11,11 +11,11 @@ from requests import RequestException
 
 from metrify.github.auth.strategies import get_access_token
 
-type Fixture = Tuple[Any, Any, Any, Any, Any]
+type Fixture = Tuple[Any, Any, Any, Any, Any]  # type: ignore[valid-type] # noqa: F821
 
 
 class MockAuthResponse:
-    """Test class for mocking metrify.github.auth.model.AuthResponse"""
+    """Test class for mocking metrify.github.model.AuthResponse"""
 
     def __init__(self, token: str):
         self.token = token
@@ -41,7 +41,7 @@ class TestGetAccessToken:
         timeout = 10
         yield jwt, installation_id, url, headers, timeout
 
-    @patch("metrify.github.auth.model.AuthResponse.model_validate_json")
+    @patch("metrify.github.model.AuthResponse.model_validate_json")
     @patch("requests.post")
     def test_returns_token(
         self, mock_post: MagicMock, mock_parse: MagicMock, data: Fixture
@@ -67,7 +67,7 @@ class TestGetAccessToken:
         mock_parse.assert_called_once_with(response_content)
         assert result == token_value
 
-    @patch("metrify.github.auth.model.AuthResponse.model_validate_json")
+    @patch("metrify.github.model.AuthResponse.model_validate_json")
     @patch("requests.post")
     def test_request_error(
         self, mock_post: MagicMock, mock_parse: MagicMock, data: Fixture
